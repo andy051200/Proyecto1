@@ -1821,422 +1821,447 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main_proyecto1.c: 110: antirrebotes();
 "110
 [e ( _antirrebotes ..  ]
-[; ;main_proyecto1.c: 112: if (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
+[; ;main_proyecto1.c: 112: while (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
 "112
-[e $ ! && && == -> _bot_encendido `i -> 1 `i == -> _bot_apagado `i -> 0 `i == -> _bot_retorno `i -> 0 `i 150  ]
+[e $U 150  ]
+[e :U 151 ]
 [; ;main_proyecto1.c: 113: {
 "113
 {
-[; ;main_proyecto1.c: 114: for(int i=0; i<1000;i++)
+[; ;main_proyecto1.c: 114: bot_apagado=0;
 "114
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 1000 `i 151  ]
-[e $U 152  ]
+[e = _bot_apagado -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 115: bot_retorno=0;
 "115
-[e :U 151 ]
-[; ;main_proyecto1.c: 115: {
-{
-[; ;main_proyecto1.c: 116: motor_encendido();
-"116
-[e ( _motor_encendido ..  ]
+[e = _bot_retorno -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 117: for(int i=0; i<60000;i++)
 "117
-}
-"114
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 1000 `i 151  ]
-[e :U 152 ]
-"117
-}
-"118
-}
-[; ;main_proyecto1.c: 117: }
-[; ;main_proyecto1.c: 118: }
-[e $U 154  ]
-"120
-[e :U 150 ]
-[; ;main_proyecto1.c: 120: else if (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
-[e $ ! && && == -> _bot_encendido `i -> 0 `i == -> _bot_apagado `i -> 0 `i == -> _bot_retorno `i -> 1 `i 155  ]
-[; ;main_proyecto1.c: 121: {
-"121
-{
-[; ;main_proyecto1.c: 122: for(int i=0; i<1000;i++)
-"122
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 1000 `i 156  ]
-[e $U 157  ]
-"123
-[e :U 156 ]
-[; ;main_proyecto1.c: 123: {
+[e $ < -> _i `l -> 60000 `l 153  ]
+[e $U 154  ]
+"118
+[e :U 153 ]
+[; ;main_proyecto1.c: 118: {
 {
-[; ;main_proyecto1.c: 124: retorno_motor();
-"124
-[e ( _retorno_motor ..  ]
-"125
+[; ;main_proyecto1.c: 119: motor_encendido();
+"119
+[e ( _motor_encendido ..  ]
+"120
 }
-"122
+"117
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 1000 `i 156  ]
-[e :U 157 ]
-"125
-}
-"126
-}
-[; ;main_proyecto1.c: 125: }
-[; ;main_proyecto1.c: 126: }
-[e $U 159  ]
-"128
-[e :U 155 ]
-[; ;main_proyecto1.c: 128: else if(bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
-[e $ ! && && == -> _bot_encendido `i -> 0 `i == -> _bot_apagado `i -> 1 `i == -> _bot_retorno `i -> 0 `i 160  ]
-[; ;main_proyecto1.c: 129: motor_apagado();
-"129
-[e ( _motor_apagado ..  ]
-[e $U 161  ]
-"132
-[e :U 160 ]
-[; ;main_proyecto1.c: 132: else
-[; ;main_proyecto1.c: 133: motor_apagado();
-"133
-[e ( _motor_apagado ..  ]
-[e :U 161 ]
-[e :U 159 ]
+[e $ < -> _i `l -> 60000 `l 153  ]
 [e :U 154 ]
+"120
+}
+"121
+}
+[e :U 150 ]
+"112
+[e $ && && == -> _bot_encendido `i -> 1 `i == -> _bot_apagado `i -> 0 `i == -> _bot_retorno `i -> 0 `i 151  ]
+[e :U 152 ]
+[; ;main_proyecto1.c: 120: }
+[; ;main_proyecto1.c: 121: }
+[; ;main_proyecto1.c: 123: while (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
+"123
+[e $U 156  ]
+[e :U 157 ]
+[; ;main_proyecto1.c: 124: {
+"124
+{
+[; ;main_proyecto1.c: 125: bot_encendido=0;
+"125
+[e = _bot_encendido -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 126: bot_apagado=0;
+"126
+[e = _bot_apagado -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 127: for(int i=0; i<1000;i++)
+"127
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 1000 `i 159  ]
+[e $U 160  ]
+"128
+[e :U 159 ]
+[; ;main_proyecto1.c: 128: {
+{
+[; ;main_proyecto1.c: 129: retorno_motor();
+"129
+[e ( _retorno_motor ..  ]
+"130
+}
+"127
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 1000 `i 159  ]
+[e :U 160 ]
+"130
+}
+"131
+}
+[e :U 156 ]
+"123
+[e $ && && == -> _bot_encendido `i -> 0 `i == -> _bot_apagado `i -> 0 `i == -> _bot_retorno `i -> 1 `i 157  ]
+[e :U 158 ]
+[; ;main_proyecto1.c: 130: }
+[; ;main_proyecto1.c: 131: }
+[; ;main_proyecto1.c: 133: while (bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
+"133
+[e $U 162  ]
+[e :U 163 ]
+[; ;main_proyecto1.c: 134: {
+"134
+{
+[; ;main_proyecto1.c: 135: bot_encendido=0;
+"135
+[e = _bot_encendido -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 136: bot_retorno=0;
 "136
+[e = _bot_retorno -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 137: motor_apagado();
+"137
+[e ( _motor_apagado ..  ]
+"138
+}
+[e :U 162 ]
+"133
+[e $ && && == -> _bot_encendido `i -> 0 `i == -> _bot_apagado `i -> 1 `i == -> _bot_retorno `i -> 0 `i 163  ]
+[e :U 164 ]
+"148
 }
 [e :U 147 ]
 "107
 [e $U 148  ]
 [e :U 149 ]
-[; ;main_proyecto1.c: 136: }
-[; ;main_proyecto1.c: 137: return;
-"137
-[e $UE 146  ]
 [; ;main_proyecto1.c: 138: }
-"138
+[; ;main_proyecto1.c: 148: }
+[; ;main_proyecto1.c: 149: return;
+"149
+[e $UE 146  ]
+[; ;main_proyecto1.c: 150: }
+"150
 [e :UE 146 ]
 }
-"142
+"154
 [v _setup `(v ~T0 @X0 1 ef ]
-"143
+"155
 {
-[; ;main_proyecto1.c: 142: void setup(void)
-[; ;main_proyecto1.c: 143: {
+[; ;main_proyecto1.c: 154: void setup(void)
+[; ;main_proyecto1.c: 155: {
 [e :U _setup ]
 [f ]
-[; ;main_proyecto1.c: 145: ANSEL=0;
-"145
+[; ;main_proyecto1.c: 157: ANSEL=0;
+"157
 [e = _ANSEL -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 146: ANSELH=0;
-"146
-[e = _ANSELH -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 148: TRISA=0;
-"148
-[e = _TRISA -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 149: TRISBbits.TRISB0=1;
-"149
-[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 150: TRISBbits.TRISB1=1;
-"150
-[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 151: TRISBbits.TRISB2=1;
-"151
-[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 152: TRISD=0;
-"152
-[e = _TRISD -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 154: PORTA=0;
-"154
-[e = _PORTA -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 155: PORTB=0;
-"155
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 156: PORTD=0;
-"156
-[e = _PORTD -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 158: osc_config(4);
+[; ;main_proyecto1.c: 158: ANSELH=0;
 "158
-[e ( _osc_config (1 -> -> 4 `i `uc ]
-[; ;main_proyecto1.c: 160: OPTION_REGbits.nRBPU=0;
+[e = _ANSELH -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 160: TRISA=0;
 "160
-[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 161: WPUBbits.WPUB0=1;
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 161: TRISBbits.TRISB0=1;
 "161
-[e = . . _WPUBbits 1 0 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 162: WPUBbits.WPUB1=1;
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 162: TRISBbits.TRISB1=1;
 "162
-[e = . . _WPUBbits 1 1 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 163: WPUBbits.WPUB2=1;
+[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 163: TRISBbits.TRISB2=1;
 "163
-[e = . . _WPUBbits 1 2 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 165: INTCONbits.GIE=1;
-"165
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 166: INTCONbits.PEIE = 1;
+[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 164: TRISD=0;
+"164
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 166: PORTA=0;
 "166
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 167: INTCONbits.RBIE=1;
+[e = _PORTA -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 167: PORTB=0;
 "167
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 168: INTCONbits.RBIF=0;
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 168: PORTD=0;
 "168
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 169: IOCBbits.IOCB0=1;
-"169
-[e = . . _IOCBbits 1 0 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 170: IOCBbits.IOCB1=1;
+[e = _PORTD -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 170: osc_config(4);
 "170
-[e = . . _IOCBbits 1 1 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 171: IOCBbits.IOCB2=1;
-"171
-[e = . . _IOCBbits 1 2 -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 172: }
+[e ( _osc_config (1 -> -> 4 `i `uc ]
+[; ;main_proyecto1.c: 172: OPTION_REGbits.nRBPU=0;
 "172
-[e :UE 162 ]
-}
+[e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 173: WPUBbits.WPUB0=1;
+"173
+[e = . . _WPUBbits 1 0 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 174: WPUBbits.WPUB1=1;
+"174
+[e = . . _WPUBbits 1 1 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 175: WPUBbits.WPUB2=1;
+"175
+[e = . . _WPUBbits 1 2 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 177: INTCONbits.GIE=1;
 "177
-[v _antirrebotes `(v ~T0 @X0 1 ef ]
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 178: INTCONbits.PEIE = 1;
 "178
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 179: INTCONbits.RBIE=1;
+"179
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 180: INTCONbits.RBIF=0;
+"180
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 181: IOCBbits.IOCB0=1;
+"181
+[e = . . _IOCBbits 1 0 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 182: IOCBbits.IOCB1=1;
+"182
+[e = . . _IOCBbits 1 1 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 183: IOCBbits.IOCB2=1;
+"183
+[e = . . _IOCBbits 1 2 -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 184: }
+"184
+[e :UE 165 ]
+}
+"189
+[v _antirrebotes `(v ~T0 @X0 1 ef ]
+"190
 {
-[; ;main_proyecto1.c: 177: void antirrebotes(void)
-[; ;main_proyecto1.c: 178: {
+[; ;main_proyecto1.c: 189: void antirrebotes(void)
+[; ;main_proyecto1.c: 190: {
 [e :U _antirrebotes ]
 [f ]
-[; ;main_proyecto1.c: 180: if (antirrebote1==1 && PORTBbits.RB0==0)
-"180
-[e $ ! && == -> _antirrebote1 `i -> 1 `i == -> . . _PORTBbits 0 0 `i -> 0 `i 164  ]
-[; ;main_proyecto1.c: 181: {
-"181
-{
-[; ;main_proyecto1.c: 182: antirrebote1=0;
-"182
-[e = _antirrebote1 -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 183: PORTD++;
-"183
-[e ++ _PORTD -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 184: bot_encendido++;
-"184
-[e ++ _bot_encendido -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 185: if (bot_encendido>=2)
-"185
-[e $ ! >= -> _bot_encendido `i -> 2 `i 165  ]
-[; ;main_proyecto1.c: 186: bot_encendido=0;
-"186
-[e = _bot_encendido -> -> 0 `i `uc ]
-[e :U 165 ]
-"187
-}
-[; ;main_proyecto1.c: 187: }
-[e $U 166  ]
-"188
-[e :U 164 ]
-[; ;main_proyecto1.c: 188: else
-[; ;main_proyecto1.c: 189: bot_encendido=0;
-"189
-[e = _bot_encendido -> -> 0 `i `uc ]
-[e :U 166 ]
-[; ;main_proyecto1.c: 191: if (antirrebote2==1 && PORTBbits.RB1==0)
-"191
-[e $ ! && == -> _antirrebote2 `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i 167  ]
-[; ;main_proyecto1.c: 192: {
+[; ;main_proyecto1.c: 192: if (antirrebote1==1 && PORTBbits.RB0==0)
 "192
-{
-[; ;main_proyecto1.c: 193: antirrebote2=0;
+[e $ ! && == -> _antirrebote1 `i -> 1 `i == -> . . _PORTBbits 0 0 `i -> 0 `i 167  ]
+[; ;main_proyecto1.c: 193: {
 "193
-[e = _antirrebote2 -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 194: bot_apagado++;
+{
+[; ;main_proyecto1.c: 194: antirrebote1=0;
 "194
-[e ++ _bot_apagado -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 195: if(bot_apagado>=2)
+[e = _antirrebote1 -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 195: PORTD++;
 "195
-[e $ ! >= -> _bot_apagado `i -> 2 `i 168  ]
-[; ;main_proyecto1.c: 196: bot_apagado=0;
+[e ++ _PORTD -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 196: bot_encendido++;
 "196
-[e = _bot_apagado -> -> 0 `i `uc ]
-[e :U 168 ]
+[e ++ _bot_encendido -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 197: if (bot_encendido>1)
 "197
-}
-[; ;main_proyecto1.c: 197: }
-[e $U 169  ]
+[e $ ! > -> _bot_encendido `i -> 1 `i 168  ]
+[; ;main_proyecto1.c: 198: bot_encendido=0;
 "198
-[e :U 167 ]
-[; ;main_proyecto1.c: 198: else
-[; ;main_proyecto1.c: 199: bot_apagado=0;
+[e = _bot_encendido -> -> 0 `i `uc ]
+[e :U 168 ]
 "199
-[e = _bot_apagado -> -> 0 `i `uc ]
-[e :U 169 ]
-[; ;main_proyecto1.c: 201: if (antirrebote3==1 && PORTBbits.RB2==0)
+}
+[; ;main_proyecto1.c: 199: }
+[e $U 169  ]
+"200
+[e :U 167 ]
+[; ;main_proyecto1.c: 200: else
+[; ;main_proyecto1.c: 201: bot_encendido=0;
 "201
-[e $ ! && == -> _antirrebote3 `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 170  ]
-[; ;main_proyecto1.c: 202: {
-"202
-{
-[; ;main_proyecto1.c: 203: antirrebote3=0;
+[e = _bot_encendido -> -> 0 `i `uc ]
+[e :U 169 ]
+[; ;main_proyecto1.c: 203: if (antirrebote2==1 && PORTBbits.RB1==0)
 "203
-[e = _antirrebote3 -> -> 0 `i `uc ]
-[; ;main_proyecto1.c: 204: bot_retorno++;
+[e $ ! && == -> _antirrebote2 `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i 170  ]
+[; ;main_proyecto1.c: 204: {
 "204
-[e ++ _bot_retorno -> -> 1 `i `uc ]
-[; ;main_proyecto1.c: 205: if(bot_retorno>=2)
-"205
-[e $ ! >= -> _bot_retorno `i -> 2 `i 171  ]
-[; ;main_proyecto1.c: 206: bot_retorno=0;
-"206
-[e = _bot_retorno -> -> 0 `i `uc ]
-[e :U 171 ]
-"207
-}
-[; ;main_proyecto1.c: 207: }
-[e $U 172  ]
-"208
-[e :U 170 ]
-[; ;main_proyecto1.c: 208: else
-[; ;main_proyecto1.c: 209: bot_retorno=0;
-"209
-[e = _bot_retorno -> -> 0 `i `uc ]
-[e :U 172 ]
-[; ;main_proyecto1.c: 210: return;
-"210
-[e $UE 163  ]
-[; ;main_proyecto1.c: 211: }
-"211
-[e :UE 163 ]
-}
-"214
-[v _motor_encendido `(v ~T0 @X0 1 ef ]
-"215
 {
-[; ;main_proyecto1.c: 214: void motor_encendido(void)
-[; ;main_proyecto1.c: 215: {
+[; ;main_proyecto1.c: 205: antirrebote2=0;
+"205
+[e = _antirrebote2 -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 206: bot_apagado++;
+"206
+[e ++ _bot_apagado -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 207: if(bot_apagado>1)
+"207
+[e $ ! > -> _bot_apagado `i -> 1 `i 171  ]
+[; ;main_proyecto1.c: 208: bot_apagado=0;
+"208
+[e = _bot_apagado -> -> 0 `i `uc ]
+[e :U 171 ]
+"209
+}
+[; ;main_proyecto1.c: 209: }
+[e $U 172  ]
+"210
+[e :U 170 ]
+[; ;main_proyecto1.c: 210: else
+[; ;main_proyecto1.c: 211: bot_apagado=0;
+"211
+[e = _bot_apagado -> -> 0 `i `uc ]
+[e :U 172 ]
+[; ;main_proyecto1.c: 213: if (antirrebote3==1 && PORTBbits.RB2==0)
+"213
+[e $ ! && == -> _antirrebote3 `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i 173  ]
+[; ;main_proyecto1.c: 214: {
+"214
+{
+[; ;main_proyecto1.c: 215: antirrebote3=0;
+"215
+[e = _antirrebote3 -> -> 0 `i `uc ]
+[; ;main_proyecto1.c: 216: bot_retorno++;
+"216
+[e ++ _bot_retorno -> -> 1 `i `uc ]
+[; ;main_proyecto1.c: 217: if(bot_retorno>1)
+"217
+[e $ ! > -> _bot_retorno `i -> 1 `i 174  ]
+[; ;main_proyecto1.c: 218: bot_retorno=0;
+"218
+[e = _bot_retorno -> -> 0 `i `uc ]
+[e :U 174 ]
+"219
+}
+[; ;main_proyecto1.c: 219: }
+[e $U 175  ]
+"220
+[e :U 173 ]
+[; ;main_proyecto1.c: 220: else
+[; ;main_proyecto1.c: 221: bot_retorno=0;
+"221
+[e = _bot_retorno -> -> 0 `i `uc ]
+[e :U 175 ]
+[; ;main_proyecto1.c: 222: return;
+"222
+[e $UE 166  ]
+[; ;main_proyecto1.c: 223: }
+"223
+[e :UE 166 ]
+}
+"226
+[v _motor_encendido `(v ~T0 @X0 1 ef ]
+"227
+{
+[; ;main_proyecto1.c: 226: void motor_encendido(void)
+[; ;main_proyecto1.c: 227: {
 [e :U _motor_encendido ]
 [f ]
-[; ;main_proyecto1.c: 216: PORTA=encendido[1];
-"216
-[e = _PORTA *U + &U _encendido * -> -> -> 1 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
-[; ;main_proyecto1.c: 217: _delay((unsigned long)((1)*(4000000/4000.0)));
-"217
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 218: PORTA=encendido[2];
-"218
-[e = _PORTA *U + &U _encendido * -> -> -> 2 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
-[; ;main_proyecto1.c: 219: _delay((unsigned long)((1)*(4000000/4000.0)));
-"219
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 220: PORTA=encendido[3];
-"220
-[e = _PORTA *U + &U _encendido * -> -> -> 3 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
-[; ;main_proyecto1.c: 221: _delay((unsigned long)((1)*(4000000/4000.0)));
-"221
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 222: PORTA=encendido[4];
-"222
-[e = _PORTA *U + &U _encendido * -> -> -> 4 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
-[; ;main_proyecto1.c: 223: _delay((unsigned long)((1)*(4000000/4000.0)));
-"223
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 224: PORTA=encendido[5];
-"224
-[e = _PORTA *U + &U _encendido * -> -> -> 5 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
-[; ;main_proyecto1.c: 225: _delay((unsigned long)((1)*(4000000/4000.0)));
-"225
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 226: PORTA=encendido[6];
-"226
-[e = _PORTA *U + &U _encendido * -> -> -> 6 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
-[; ;main_proyecto1.c: 227: _delay((unsigned long)((1)*(4000000/4000.0)));
-"227
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 228: PORTA=encendido[7];
+[; ;main_proyecto1.c: 228: PORTA=encendido[1];
 "228
-[e = _PORTA *U + &U _encendido * -> -> -> 7 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[e = _PORTA *U + &U _encendido * -> -> -> 1 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
 [; ;main_proyecto1.c: 229: _delay((unsigned long)((1)*(4000000/4000.0)));
 "229
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 230: PORTA=encendido[8];
+[; ;main_proyecto1.c: 230: PORTA=encendido[2];
 "230
-[e = _PORTA *U + &U _encendido * -> -> -> 8 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[e = _PORTA *U + &U _encendido * -> -> -> 2 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
 [; ;main_proyecto1.c: 231: _delay((unsigned long)((1)*(4000000/4000.0)));
 "231
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 233: }
+[; ;main_proyecto1.c: 232: PORTA=encendido[3];
+"232
+[e = _PORTA *U + &U _encendido * -> -> -> 3 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[; ;main_proyecto1.c: 233: _delay((unsigned long)((1)*(4000000/4000.0)));
 "233
-[e :UE 173 ]
-}
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 234: PORTA=encendido[4];
+"234
+[e = _PORTA *U + &U _encendido * -> -> -> 4 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[; ;main_proyecto1.c: 235: _delay((unsigned long)((1)*(4000000/4000.0)));
+"235
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 236: PORTA=encendido[5];
 "236
-[v _motor_apagado `(v ~T0 @X0 1 ef ]
+[e = _PORTA *U + &U _encendido * -> -> -> 5 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[; ;main_proyecto1.c: 237: _delay((unsigned long)((1)*(4000000/4000.0)));
 "237
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 238: PORTA=encendido[6];
+"238
+[e = _PORTA *U + &U _encendido * -> -> -> 6 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[; ;main_proyecto1.c: 239: _delay((unsigned long)((1)*(4000000/4000.0)));
+"239
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 240: PORTA=encendido[7];
+"240
+[e = _PORTA *U + &U _encendido * -> -> -> 7 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[; ;main_proyecto1.c: 241: _delay((unsigned long)((1)*(4000000/4000.0)));
+"241
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 242: PORTA=encendido[8];
+"242
+[e = _PORTA *U + &U _encendido * -> -> -> 8 `i `ui `ux -> -> # *U &U _encendido `ui `ux ]
+[; ;main_proyecto1.c: 243: _delay((unsigned long)((1)*(4000000/4000.0)));
+"243
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 245: }
+"245
+[e :UE 176 ]
+}
+"248
+[v _motor_apagado `(v ~T0 @X0 1 ef ]
+"249
 {
-[; ;main_proyecto1.c: 236: void motor_apagado(void)
-[; ;main_proyecto1.c: 237: {
+[; ;main_proyecto1.c: 248: void motor_apagado(void)
+[; ;main_proyecto1.c: 249: {
 [e :U _motor_apagado ]
 [f ]
-[; ;main_proyecto1.c: 238: PORTA=apagado;
-"238
+[; ;main_proyecto1.c: 250: PORTA=apagado;
+"250
 [e = _PORTA _apagado ]
-[; ;main_proyecto1.c: 239: }
-"239
-[e :UE 174 ]
+[; ;main_proyecto1.c: 251: }
+"251
+[e :UE 177 ]
 }
-"242
+"254
 [v _retorno_motor `(v ~T0 @X0 1 ef ]
-"243
+"255
 {
-[; ;main_proyecto1.c: 242: void retorno_motor(void)
-[; ;main_proyecto1.c: 243: {
+[; ;main_proyecto1.c: 254: void retorno_motor(void)
+[; ;main_proyecto1.c: 255: {
 [e :U _retorno_motor ]
 [f ]
-[; ;main_proyecto1.c: 244: PORTA=retorno[8];
-"244
-[e = _PORTA *U + &U _retorno * -> -> -> 8 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
-[; ;main_proyecto1.c: 245: _delay((unsigned long)((1)*(4000000/4000.0)));
-"245
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 246: PORTA=retorno[7];
-"246
-[e = _PORTA *U + &U _retorno * -> -> -> 7 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
-[; ;main_proyecto1.c: 247: _delay((unsigned long)((1)*(4000000/4000.0)));
-"247
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 248: PORTA=retorno[6];
-"248
-[e = _PORTA *U + &U _retorno * -> -> -> 6 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
-[; ;main_proyecto1.c: 249: _delay((unsigned long)((1)*(4000000/4000.0)));
-"249
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 250: PORTA=retorno[5];
-"250
-[e = _PORTA *U + &U _retorno * -> -> -> 5 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
-[; ;main_proyecto1.c: 251: _delay((unsigned long)((1)*(4000000/4000.0)));
-"251
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 252: PORTA=retorno[4];
-"252
-[e = _PORTA *U + &U _retorno * -> -> -> 4 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
-[; ;main_proyecto1.c: 253: _delay((unsigned long)((1)*(4000000/4000.0)));
-"253
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 254: PORTA=retorno[3];
-"254
-[e = _PORTA *U + &U _retorno * -> -> -> 3 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
-[; ;main_proyecto1.c: 255: _delay((unsigned long)((1)*(4000000/4000.0)));
-"255
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 256: PORTA=retorno[2];
+[; ;main_proyecto1.c: 256: PORTA=retorno[8];
 "256
-[e = _PORTA *U + &U _retorno * -> -> -> 2 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[e = _PORTA *U + &U _retorno * -> -> -> 8 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
 [; ;main_proyecto1.c: 257: _delay((unsigned long)((1)*(4000000/4000.0)));
 "257
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 258: PORTA=retorno[1];
+[; ;main_proyecto1.c: 258: PORTA=retorno[7];
 "258
-[e = _PORTA *U + &U _retorno * -> -> -> 1 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[e = _PORTA *U + &U _retorno * -> -> -> 7 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
 [; ;main_proyecto1.c: 259: _delay((unsigned long)((1)*(4000000/4000.0)));
 "259
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;main_proyecto1.c: 260: }
+[; ;main_proyecto1.c: 260: PORTA=retorno[6];
 "260
-[e :UE 175 ]
+[e = _PORTA *U + &U _retorno * -> -> -> 6 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[; ;main_proyecto1.c: 261: _delay((unsigned long)((1)*(4000000/4000.0)));
+"261
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 262: PORTA=retorno[5];
+"262
+[e = _PORTA *U + &U _retorno * -> -> -> 5 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[; ;main_proyecto1.c: 263: _delay((unsigned long)((1)*(4000000/4000.0)));
+"263
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 264: PORTA=retorno[4];
+"264
+[e = _PORTA *U + &U _retorno * -> -> -> 4 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[; ;main_proyecto1.c: 265: _delay((unsigned long)((1)*(4000000/4000.0)));
+"265
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 266: PORTA=retorno[3];
+"266
+[e = _PORTA *U + &U _retorno * -> -> -> 3 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[; ;main_proyecto1.c: 267: _delay((unsigned long)((1)*(4000000/4000.0)));
+"267
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 268: PORTA=retorno[2];
+"268
+[e = _PORTA *U + &U _retorno * -> -> -> 2 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[; ;main_proyecto1.c: 269: _delay((unsigned long)((1)*(4000000/4000.0)));
+"269
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 270: PORTA=retorno[1];
+"270
+[e = _PORTA *U + &U _retorno * -> -> -> 1 `i `ui `ux -> -> # *U &U _retorno `ui `ux ]
+[; ;main_proyecto1.c: 271: _delay((unsigned long)((1)*(4000000/4000.0)));
+"271
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main_proyecto1.c: 272: }
+"272
+[e :UE 178 ]
 }

@@ -2665,35 +2665,40 @@ while(1)
 
 antirrebotes();
 
-if (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
+while (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
 {
-for(int i=0; i<1000;i++)
+bot_apagado=0;
+bot_retorno=0;
+
+for(int i=0; i<60000;i++)
 {
 motor_encendido();
 }
 }
 
-else if (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
+while (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
 {
+bot_encendido=0;
+bot_apagado=0;
 for(int i=0; i<1000;i++)
 {
 retorno_motor();
 }
 }
 
-else if(bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
+while (bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
+{
+bot_encendido=0;
+bot_retorno=0;
 motor_apagado();
+}
 
-
-else
-motor_apagado();
-
-
+# 148
 }
 return;
 }
 
-# 142
+# 154
 void setup(void)
 {
 
@@ -2726,7 +2731,7 @@ IOCBbits.IOCB1=1;
 IOCBbits.IOCB2=1;
 }
 
-# 177
+# 189
 void antirrebotes(void)
 {
 
@@ -2735,7 +2740,7 @@ if (antirrebote1==1 && PORTBbits.RB0==0)
 antirrebote1=0;
 PORTD++;
 bot_encendido++;
-if (bot_encendido>=2)
+if (bot_encendido>1)
 bot_encendido=0;
 }
 else
@@ -2745,7 +2750,7 @@ if (antirrebote2==1 && PORTBbits.RB1==0)
 {
 antirrebote2=0;
 bot_apagado++;
-if(bot_apagado>=2)
+if(bot_apagado>1)
 bot_apagado=0;
 }
 else
@@ -2755,7 +2760,7 @@ if (antirrebote3==1 && PORTBbits.RB2==0)
 {
 antirrebote3=0;
 bot_retorno++;
-if(bot_retorno>=2)
+if(bot_retorno>1)
 bot_retorno=0;
 }
 else

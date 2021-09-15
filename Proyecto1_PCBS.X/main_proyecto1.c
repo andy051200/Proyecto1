@@ -109,29 +109,41 @@ void main(void)
         //-------FUNCION PARA 3 ANTIRREBOTES
         antirrebotes();
         //-------EVALUACION SI SE PRENDE
-        if (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
+        while (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
         {
-            for(int i=0; i<1000;i++)
+            bot_apagado=0;
+            bot_retorno=0;
+            
+            for(int i=0; i<60000;i++)
             {
                 motor_encendido();
             }
         }
         //-------EVALUACION SI SE PIDE RETORNO
-        else if (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
+        while (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
         {
+            bot_encendido=0;
+            bot_apagado=0;
             for(int i=0; i<1000;i++)
             {
                 retorno_motor();
             }
         }
         //-------EVALUACION SI SE APAGA
-        else if(bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
+        while (bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
+        {
+            bot_encendido=0;
+            bot_retorno=0;
             motor_apagado();
-        
+        }
         //-------EVALUACION SI NO SE HACE NADA
-        else
+        /*else
+        {
+            bot_encendido=0;
+            bot_apagado=0;
+            bot_retorno=0;
             motor_apagado();
-        
+        }*/
         
     }
     return;
@@ -151,11 +163,11 @@ void setup(void)
     TRISBbits.TRISB2=1;        //entrada para los botones de modos
     TRISD=0;        //entrada para los botones de modos
     //-------LIMPIEZA DE PUERTOS
-    PORTA=0;        //se limpia puerto A
-    PORTB=0;        //se limpia puerto B
-    PORTD=0;        //se limpia puerto B
+    PORTA=0;                    //se limpia puerto A
+    PORTB=0;                    //se limpia puerto B
+    PORTD=0;                    //se limpia puerto B
     //-------CONFIGURACION DE RELOJ
-    osc_config(4);
+    osc_config(4);                      //reloj a 4MHz
     //-------CONFIGURACION DE WPUB
     OPTION_REGbits.nRBPU=0;             //se activan WPUB
     WPUBbits.WPUB0=1;                   //RB0, boton encendido
@@ -182,7 +194,7 @@ void antirrebotes(void)
         antirrebote1=0;
         PORTD++;
         bot_encendido++;
-        if (bot_encendido>=2)
+        if (bot_encendido>1)
             bot_encendido=0;
     }
     else
@@ -192,7 +204,7 @@ void antirrebotes(void)
     {
         antirrebote2=0;
         bot_apagado++;
-        if(bot_apagado>=2)
+        if(bot_apagado>1)
             bot_apagado=0;
     }
     else
@@ -202,7 +214,7 @@ void antirrebotes(void)
     {
         antirrebote3=0;
         bot_retorno++;
-        if(bot_retorno>=2)
+        if(bot_retorno>1)
             bot_retorno=0;
     }
     else

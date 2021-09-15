@@ -7,15 +7,15 @@
 [v _isr isr `II(v  1 e 1 0 ]
 "104
 [v _main main `(v  1 e 1 0 ]
-"142
+"154
 [v _setup setup `(v  1 e 1 0 ]
-"177
+"189
 [v _antirrebotes antirrebotes `(v  1 e 1 0 ]
-"214
+"226
 [v _motor_encendido motor_encendido `(v  1 e 1 0 ]
-"236
+"248
 [v _motor_apagado motor_apagado `(v  1 e 1 0 ]
-"242
+"254
 [v _retorno_motor retorno_motor `(v  1 e 1 0 ]
 "16 C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Proyecto1_PCBS.X/Osc_config.c
 [v _osc_config osc_config `(v  1 e 1 0 ]
@@ -155,16 +155,16 @@
 "104
 [v _main main `(v  1 e 1 0 ]
 {
-"122
+"127
 [v main@i_240 i `i  1 a 2 2 ]
-"114
+"117
 [v main@i i `i  1 a 2 0 ]
-"138
+"150
 } 0
-"142
+"154
 [v _setup setup `(v  1 e 1 0 ]
 {
-"172
+"184
 } 0
 "16 C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Proyecto1_PCBS.X/Osc_config.c
 [v _osc_config osc_config `(v  1 e 1 0 ]
@@ -174,25 +174,25 @@
 [v osc_config@freq freq `uc  1 a 1 3 ]
 "42
 } 0
-"242 C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Proyecto1_PCBS.X/main_proyecto1.c
+"254 C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Proyecto1_PCBS.X/main_proyecto1.c
 [v _retorno_motor retorno_motor `(v  1 e 1 0 ]
 {
-"260
+"272
 } 0
-"214
+"226
 [v _motor_encendido motor_encendido `(v  1 e 1 0 ]
 {
-"233
+"245
 } 0
-"236
+"248
 [v _motor_apagado motor_apagado `(v  1 e 1 0 ]
 {
-"239
+"251
 } 0
-"177
+"189
 [v _antirrebotes antirrebotes `(v  1 e 1 0 ]
 {
-"211
+"223
 } 0
 "76
 [v _isr isr `II(v  1 e 1 0 ]
