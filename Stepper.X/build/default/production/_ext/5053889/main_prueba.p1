@@ -34,15 +34,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"166
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "49 C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c
 [; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 49: void motor_encendido(void);
 [v _motor_encendido `(v ~T0 @X0 0 ef ]
-"50
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 50: void motor_apagado(void);
-[v _motor_apagado `(v ~T0 @X0 0 ef ]
+"51
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 51: void motor_retorno(void);
+[v _motor_retorno `(v ~T0 @X0 0 ef ]
 "3387 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
@@ -63,9 +60,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"1416
-[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1416: extern volatile unsigned char TRISA __attribute__((address(0x085)));
-[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"1664
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
+[v _TRISE `Vuc ~T0 @X0 0 e@137 ]
+"414
+[; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
+[v _PORTE `Vuc ~T0 @X0 0 e@9 ]
 "352
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
@@ -398,319 +398,383 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 44: unsigned char encendido;
 [v _encendido `uc ~T0 @X0 1 e ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"54
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 54: void __attribute__((picinterrupt(("")))) isr(void)
-[v _isr `(v ~T1 @X0 1 ef ]
 "55
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 55: {
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 55: void __attribute__((picinterrupt(("")))) isr(void)
+[v _isr `(v ~T1 @X0 1 ef ]
+"56
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 56: {
 {
 [e :U _isr ]
 [f ]
-"56
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 56:     if (INTCONbits.RBIF)
-[e $ ! != -> . . _INTCONbits 0 0 `i -> 0 `i 139  ]
 "57
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 57:     {
-{
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 57:     if (INTCONbits.RBIF)
+[e $ ! != -> . . _INTCONbits 0 0 `i -> 0 `i 139  ]
 "58
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 58:         switch(PORTB)
-[e $U 141  ]
-"59
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 59:         {
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 58:     {
 {
-"64
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 64:             case(0b11111101):
-[e :U 142 ]
+"59
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 59:         switch(PORTB)
+[e $U 141  ]
+"60
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 60:         {
+{
 "65
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 65:                 antirrebote1=1;
-[e = _antirrebote1 -> -> 1 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 65:             case(0b11111101):
+[e :U 142 ]
 "66
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 66:                 break;
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 66:                 antirrebote1=1;
+[e = _antirrebote1 -> -> 1 `i `uc ]
+"67
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 67:                 break;
 [e $U 140  ]
+"68
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 68:             case(0b11111011):
+[e :U 143 ]
+"69
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 69:                 antirrebote2=1;
+[e = _antirrebote2 -> -> 1 `i `uc ]
 "70
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 70:         }
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 70:                 break;
+[e $U 140  ]
+"71
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 71:         }
 }
 [e $U 140  ]
 [e :U 141 ]
 [e [\ -> _PORTB `i , $ -> 253 `i 142
+ , $ -> 251 `i 143
  140 ]
 [e :U 140 ]
-"71
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 71:         INTCONbits.RBIF=0;
-[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
 "72
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 72:     }
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 72:         INTCONbits.RBIF=0;
+[e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
+"73
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 73:     }
 }
 [e :U 139 ]
-"74
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 74: }
+"75
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 75: }
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"79
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 79: void main(void) {
+"80
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 80: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
+"81
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 81: {
 {
 [e :U _main ]
 [f ]
-"80
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 80:     setup();
-[e ( _setup ..  ]
-"81
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 81:     while(1)
-[e :U 145 ]
 "82
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 82:     {
-{
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 82:     setup();
+[e ( _setup ..  ]
 "83
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 83:         if (antirrebote1==1 && PORTBbits.RB1==0)
-[e $ ! && == -> _antirrebote1 `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i 147  ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 83:     while(1)
+[e :U 146 ]
 "84
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 84:         {
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 84:     {
 {
 "85
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 85:             antirrebote1=0;
-[e = _antirrebote1 -> -> 0 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 85:         if (antirrebote1==1 && PORTBbits.RB1==0 && PORTBbits.RB2==1)
+[e $ ! && && == -> _antirrebote1 `i -> 1 `i == -> . . _PORTBbits 0 1 `i -> 0 `i == -> . . _PORTBbits 0 2 `i -> 1 `i 148  ]
 "86
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 86:             encendido++;
-[e ++ _encendido -> -> 1 `i `uc ]
-"87
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 87:             PORTA=encendido;
-[e = _PORTA _encendido ]
-"88
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 88:         }
-}
-[e $U 148  ]
-"89
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 89:         else
-[e :U 147 ]
-"90
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 90:         {
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 86:         {
 {
-"91
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 91:             encendido=0;
-[e = _encendido -> -> 0 `i `uc ]
-"92
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 92:         }
+"87
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 87:             antirrebote1=0;
+[e = _antirrebote1 -> -> 0 `i `uc ]
+"88
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 88:             motor_encendido();
+[e ( _motor_encendido ..  ]
+"89
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 89:         }
 }
 [e :U 148 ]
+"91
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 91:         if (antirrebote2==1 && PORTBbits.RB2==0 && PORTBbits.RB1==1)
+[e $ ! && && == -> _antirrebote2 `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i == -> . . _PORTBbits 0 1 `i -> 1 `i 149  ]
+"92
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 92:         {
+{
+"93
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 93:             antirrebote2=0;
+[e = _antirrebote2 -> -> 0 `i `uc ]
 "94
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 94:         if (encendido==1)
-[e $ ! == -> _encendido `i -> 1 `i 149  ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 94:             motor_retorno();
+[e ( _motor_retorno ..  ]
 "95
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 95:         {
-{
-"96
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 96:             motor_encendido();
-[e ( _motor_encendido ..  ]
-"97
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 97:         }
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 95:         }
 }
-[e $U 150  ]
-"98
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 98:         else if (encendido==2)
 [e :U 149 ]
-[e $ ! == -> _encendido `i -> 2 `i 151  ]
-"99
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 99:         {
-{
-"100
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 100:             encendido=0;
-[e = _encendido -> -> 0 `i `uc ]
+"96
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 96:     }
+}
+[e :U 145 ]
+[e $U 146  ]
+[e :U 147 ]
+"97
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 97: }
+[e :UE 144 ]
+}
 "101
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 101:             motor_apagado();
-[e ( _motor_apagado ..  ]
-"102
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 102:         }
-}
-[e :U 151 ]
-[e :U 150 ]
-"104
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 104:     }
-}
-[e :U 144 ]
-[e $U 145  ]
-[e :U 146 ]
-"105
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 105:     return;
-[e $UE 143  ]
-"106
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 106: }
-[e :UE 143 ]
-}
-"110
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 110: void setup(void)
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 101: void setup(void)
 [v _setup `(v ~T0 @X0 1 ef ]
-"111
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 111: {
+"102
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 102: {
 {
 [e :U _setup ]
 [f ]
-"113
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 113:     ANSEL=0;
+"104
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 104:     ANSEL=0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"114
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 114:     ANSELH=0;
+"105
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 105:     ANSELH=0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"116
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 116:     TRISBbits.TRISB0=1;
-[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"117
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 117:     TRISBbits.TRISB1=1;
+"107
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 107:     TRISBbits.TRISB1=1;
 [e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-"118
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 118:     TRISD=0;
+"108
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 108:     TRISBbits.TRISB2=1;
+[e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
+"109
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 109:     TRISD=0;
 [e = _TRISD -> -> 0 `i `uc ]
-"119
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 119:     TRISA=0;
-[e = _TRISA -> -> 0 `i `uc ]
-"121
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 121:     PORTA=0;
-[e = _PORTA -> -> 0 `i `uc ]
-"122
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 122:     PORTB=0;
+"110
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 110:     TRISE=0;
+[e = _TRISE -> -> 0 `i `uc ]
+"112
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 112:     PORTE=0;
+[e = _PORTE -> -> 0 `i `uc ]
+"113
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 113:     PORTB=0;
 [e = _PORTB -> -> 0 `i `uc ]
-"123
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 123:     PORTD=0;
+"114
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 114:     PORTD=0;
 [e = _PORTD -> -> 0 `i `uc ]
-"125
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 125:     osc_config(8);
+"116
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 116:     osc_config(8);
 [e ( _osc_config (1 -> -> 8 `i `uc ]
-"127
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 127:     OPTION_REGbits.nRBPU=0;
+"118
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 118:     OPTION_REGbits.nRBPU=0;
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-"128
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 128:     WPUBbits.WPUB0=1;
-[e = . . _WPUBbits 1 0 -> -> 1 `i `uc ]
-"129
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 129:     WPUBbits.WPUB1=1;
+"119
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 119:     WPUBbits.WPUB1=1;
 [e = . . _WPUBbits 1 1 -> -> 1 `i `uc ]
-"131
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 131:     INTCONbits.GIE=1;
+"120
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 120:     WPUBbits.WPUB2=1;
+[e = . . _WPUBbits 1 2 -> -> 1 `i `uc ]
+"122
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 122:     INTCONbits.GIE=1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"132
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 132:     INTCONbits.PEIE = 1;
+"123
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 123:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"133
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 133:     INTCONbits.RBIE=1;
+"124
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 124:     INTCONbits.RBIE=1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"134
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 134:     INTCONbits.RBIF=0;
+"125
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 125:     INTCONbits.RBIF=0;
 [e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"135
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 135:     IOCBbits.IOCB0=1;
-[e = . . _IOCBbits 1 0 -> -> 1 `i `uc ]
-"136
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 136:     IOCBbits.IOCB1=1;
+"126
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 126:     IOCBbits.IOCB1=1;
 [e = . . _IOCBbits 1 1 -> -> 1 `i `uc ]
-"138
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 138: }
-[e :UE 152 ]
+"127
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 127:     IOCBbits.IOCB2=1;
+[e = . . _IOCBbits 1 2 -> -> 1 `i `uc ]
+"129
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 129: }
+[e :UE 150 ]
 }
-"143
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 143: void motor_encendido(void)
+"134
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 134: void motor_encendido(void)
 [v _motor_encendido `(v ~T0 @X0 1 ef ]
-"144
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 144: {
+"135
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 135: {
 {
 [e :U _motor_encendido ]
 [f ]
-"145
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 145:     for(int i; i<1000;i++)
+"136
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 136:     for(int i; i<1000;i++)
 {
 [v _i `i ~T0 @X0 1 a ]
-[e $ < _i -> 1000 `i 154  ]
-[e $U 155  ]
-[e :U 154 ]
-"146
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 146:     {
+[e $ < _i -> 1000 `i 152  ]
+[e $U 153  ]
+[e :U 152 ]
+"137
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 137:     {
 {
+"139
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 139:         PORTDbits.RD7=1;
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+"140
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 140:         PORTDbits.RD6=0;
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+"141
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 141:         PORTDbits.RD5=0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"142
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 142:         PORTDbits.RD4=1;
+[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
+"143
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 143:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"145
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 145:         PORTDbits.RD7=1;
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+"146
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 146:         PORTDbits.RD6=1;
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+"147
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 147:         PORTDbits.RD5=0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
 "148
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 148:         PORTDbits.RD7=1;
-[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 148:         PORTDbits.RD4=0;
+[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
 "149
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 149:         PORTDbits.RD6=0;
-[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
-"150
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 150:         PORTDbits.RD5=0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 149:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "151
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 151:         PORTDbits.RD4=1;
-[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 151:         PORTDbits.RD7=0;
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
 "152
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 152:         _delay((unsigned long)((2)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 152:         PORTDbits.RD6=1;
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+"153
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 153:         PORTDbits.RD5=1;
+[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
 "154
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 154:         PORTDbits.RD7=1;
-[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 154:         PORTDbits.RD4=0;
+[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
 "155
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 155:         PORTDbits.RD6=1;
-[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
-"156
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 156:         PORTDbits.RD5=0;
-[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 155:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
 "157
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 157:         PORTDbits.RD4=0;
-[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 157:         PORTDbits.RD7=0;
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
 "158
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 158:         _delay((unsigned long)((2)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"160
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 160:         PORTDbits.RD7=0;
-[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
-"161
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 161:         PORTDbits.RD6=1;
-[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
-"162
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 162:         PORTDbits.RD5=1;
-[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-"163
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 163:         PORTDbits.RD4=0;
-[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
-"164
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 164:         _delay((unsigned long)((2)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"166
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 166:         PORTDbits.RD7=0;
-[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
-"167
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 167:         PORTDbits.RD6=0;
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 158:         PORTDbits.RD6=0;
 [e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
-"168
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 168:         PORTDbits.RD5=1;
+"159
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 159:         PORTDbits.RD5=1;
 [e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-"169
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 169:         PORTDbits.RD4=1;
+"160
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 160:         PORTDbits.RD4=1;
 [e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
-"170
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 170:         _delay((unsigned long)((2)*(8000000/4000.0)));
+"161
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 161:         _delay((unsigned long)((2)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"171
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 171:     }
+"162
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 162:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 1000 `i 154  ]
-[e :U 155 ]
+[e $ < _i -> 1000 `i 152  ]
+[e :U 153 ]
 }
-"172
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 172:     encendido=0;
-[e = _encendido -> -> 0 `i `uc ]
-"173
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 173: }
-[e :UE 153 ]
+"163
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 163: }
+[e :UE 151 ]
 }
-"175
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 175: void motor_apagado(void)
+"165
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 165: void motor_apagado(void)
 [v _motor_apagado `(v ~T0 @X0 1 ef ]
-"176
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 176: {
+"166
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 166: {
 {
 [e :U _motor_apagado ]
 [f ]
-"177
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 177:     PORTD=0x00;
+"167
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 167:     PORTD=0x00;
 [e = _PORTD -> -> 0 `i `uc ]
+"168
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 168: }
+[e :UE 155 ]
+}
+"170
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 170: void motor_retorno(void)
+[v _motor_retorno `(v ~T0 @X0 1 ef ]
+"171
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 171: {
+{
+[e :U _motor_retorno ]
+[f ]
+"172
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 172:     for(int j;j<1000;j++)
+{
+[v _j `i ~T0 @X0 1 a ]
+[e $ < _j -> 1000 `i 157  ]
+[e $U 158  ]
+[e :U 157 ]
+"173
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 173:     {
+{
+"175
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 175:         PORTDbits.RD7=0;
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
+"176
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 176:         PORTDbits.RD6=0;
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+"177
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 177:         PORTDbits.RD5=1;
+[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
 "178
-[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 178: }
-[e :UE 157 ]
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 178:         PORTDbits.RD4=1;
+[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
+"179
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 179:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"181
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 181:         PORTDbits.RD7=0;
+[e = . . _PORTDbits 0 7 -> -> 0 `i `uc ]
+"182
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 182:         PORTDbits.RD6=1;
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+"183
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 183:         PORTDbits.RD5=1;
+[e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
+"184
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 184:         PORTDbits.RD4=0;
+[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+"185
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 185:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"187
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 187:         PORTDbits.RD7=1;
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+"188
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 188:         PORTDbits.RD6=1;
+[e = . . _PORTDbits 0 6 -> -> 1 `i `uc ]
+"189
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 189:         PORTDbits.RD5=0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"190
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 190:         PORTDbits.RD4=0;
+[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+"191
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 191:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"193
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 193:         PORTDbits.RD7=1;
+[e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
+"194
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 194:         PORTDbits.RD6=0;
+[e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
+"195
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 195:         PORTDbits.RD5=0;
+[e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
+"196
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 196:         PORTDbits.RD4=1;
+[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
+"197
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 197:         _delay((unsigned long)((2)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"198
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 198:     }
+}
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 1000 `i 157  ]
+[e :U 158 ]
+}
+"199
+[; ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 199: }
+[e :UE 156 ]
 }

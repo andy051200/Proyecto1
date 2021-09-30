@@ -2665,6 +2665,7 @@ unsigned char encendido;
 void setup(void);
 void motor_encendido(void);
 void motor_apagado(void);
+void motor_retorno(void);
 
 
 
@@ -2681,9 +2682,9 @@ void __attribute__((picinterrupt(("")))) isr(void)
             case(0b11111101):
                 antirrebote1=1;
                 break;
-
-
-
+            case(0b11111011):
+                antirrebote2=1;
+                break;
         }
         INTCONbits.RBIF=0;
     }
@@ -2693,33 +2694,23 @@ void __attribute__((picinterrupt(("")))) isr(void)
 
 
 
-void main(void) {
+void main(void)
+{
     setup();
     while(1)
     {
-        if (antirrebote1==1 && PORTBbits.RB1==0)
+        if (antirrebote1==1 && PORTBbits.RB1==0 && PORTBbits.RB2==1)
         {
             antirrebote1=0;
-            encendido++;
-            PORTA=encendido;
-        }
-        else
-        {
-            encendido=0;
-        }
-
-        if (encendido==1)
-        {
             motor_encendido();
         }
-        else if (encendido==2)
-        {
-            encendido=0;
-            motor_apagado();
-        }
 
+        if (antirrebote2==1 && PORTBbits.RB2==0 && PORTBbits.RB1==1)
+        {
+            antirrebote2=0;
+            motor_retorno();
+        }
     }
-    return;
 }
 
 
@@ -2730,27 +2721,27 @@ void setup(void)
     ANSEL=0;
     ANSELH=0;
 
-    TRISBbits.TRISB0=1;
     TRISBbits.TRISB1=1;
+    TRISBbits.TRISB2=1;
     TRISD=0;
-    TRISA=0;
+    TRISE=0;
 
-    PORTA=0;
+    PORTE=0;
     PORTB=0;
     PORTD=0;
 
     osc_config(8);
 
     OPTION_REGbits.nRBPU=0;
-    WPUBbits.WPUB0=1;
     WPUBbits.WPUB1=1;
+    WPUBbits.WPUB2=1;
 
     INTCONbits.GIE=1;
     INTCONbits.PEIE = 1;
     INTCONbits.RBIE=1;
     INTCONbits.RBIF=0;
-    IOCBbits.IOCB0=1;
     IOCBbits.IOCB1=1;
+    IOCBbits.IOCB2=1;
 
 }
 
@@ -2786,10 +2777,40 @@ void motor_encendido(void)
         PORTDbits.RD4=1;
         _delay((unsigned long)((2)*(8000000/4000.0)));
     }
-    encendido=0;
 }
 
 void motor_apagado(void)
 {
     PORTD=0x00;
+}
+
+void motor_retorno(void)
+{
+    for(int j;j<1000;j++)
+    {
+
+        PORTDbits.RD7=0;
+        PORTDbits.RD6=0;
+        PORTDbits.RD5=1;
+        PORTDbits.RD4=1;
+        _delay((unsigned long)((2)*(8000000/4000.0)));
+
+        PORTDbits.RD7=0;
+        PORTDbits.RD6=1;
+        PORTDbits.RD5=1;
+        PORTDbits.RD4=0;
+        _delay((unsigned long)((2)*(8000000/4000.0)));
+
+        PORTDbits.RD7=1;
+        PORTDbits.RD6=1;
+        PORTDbits.RD5=0;
+        PORTDbits.RD4=0;
+        _delay((unsigned long)((2)*(8000000/4000.0)));
+
+        PORTDbits.RD7=1;
+        PORTDbits.RD6=0;
+        PORTDbits.RD5=0;
+        PORTDbits.RD4=1;
+        _delay((unsigned long)((2)*(8000000/4000.0)));
+    }
 }

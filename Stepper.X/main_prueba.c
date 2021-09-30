@@ -48,6 +48,7 @@ unsigned char encendido;
 void setup(void);
 void motor_encendido(void);
 void motor_apagado(void);
+void motor_retorno(void);
 /*-----------------------------------------------------------------------------
  --------------------------- INTERRUPCIONES -----------------------------------
  -----------------------------------------------------------------------------*/
@@ -64,9 +65,9 @@ void __interrupt() isr(void) //funcion de interrupciones
             case(0b11111101):       //caso interrupcion encendido o apagado
                 antirrebote1=1;
                 break;
-           /* case(0b11111101):       //caso retorno de motor
+            case(0b11111011):       //caso retorno de motor
                 antirrebote2=1;
-                break;*/
+                break;
         }
         INTCONbits.RBIF=0;
     }
@@ -76,33 +77,23 @@ void __interrupt() isr(void) //funcion de interrupciones
 /*-----------------------------------------------------------------------------
  ----------------------------- MAIN LOOP --------------------------------------
  -----------------------------------------------------------------------------*/
-void main(void) {
+void main(void) 
+{
     setup();
     while(1)
     {
-        if (antirrebote1==1 && PORTBbits.RB1==0)
+        if (antirrebote1==1 && PORTBbits.RB1==0 && PORTBbits.RB2==1)
         {
-            antirrebote1=0;            
-            encendido++;        //bandera de encendido
-            PORTA=encendido;
+            antirrebote1=0;
+            motor_encendido();            
         }
-        else
+        //--
+        if (antirrebote2==1 && PORTBbits.RB2==0 && PORTBbits.RB1==1)
         {
-            encendido=0;
+            antirrebote2=0;
+            motor_retorno();
         }
-        //-----
-        if (encendido==1)
-        {
-            motor_encendido();
-        }
-        else if (encendido==2)
-        {
-            encendido=0;
-            motor_apagado();
-        }
-        
     }
-    return;
 }
 /*-----------------------------------------------------------------------------
  ---------------------------------- SET UP -----------------------------------
@@ -113,27 +104,27 @@ void setup(void)
     ANSEL=0;
     ANSELH=0;
     //-------CONFIGURACION DE ENTRADAS Y SALIDAS
-    TRISBbits.TRISB0=1;        //entrada para boton de encendido/apagado
     TRISBbits.TRISB1=1;        //entrada para boton de retorno
+    TRISBbits.TRISB2=1;        //entrada para boton de retorno
     TRISD=0;                   //salida para pines de motor
-    TRISA=0;                   //salida para pines de motor
+    TRISE=0;                   //salida para pines de motor
     //-------LIMPIEZA DE PUERTOS
-    PORTA=0;
+    PORTE=0;
     PORTB=0;
     PORTD=0;
     //-------CONFIGURACION DE RELOJ
     osc_config(8);
     //-------CONFIGURACION DE PULL UPS
     OPTION_REGbits.nRBPU=0;             //se activan WPUB
-    WPUBbits.WPUB0=1;                   //RB0, boton encendido/apagado
-    WPUBbits.WPUB1=1;                   //RB1, boton retorno
+    WPUBbits.WPUB1=1;                   //RB1, boton encendido
+    WPUBbits.WPUB2=1;                   //RB2, boton retorno
     //-------CONFIGURACION DE INTERRUPCIONES
     INTCONbits.GIE=1;                   //se habilita interrupciones globales
     INTCONbits.PEIE = 1;                //habilitan interrupciones por perifericos
     INTCONbits.RBIE=1;                  //se  habilita IntOnChange B
     INTCONbits.RBIF=0;                  //se  apaga bandera IntOnChange B
-    IOCBbits.IOCB0=1;                   //habilita IOCB RB0
     IOCBbits.IOCB1=1;                   //habilita IOCB RB1
+    IOCBbits.IOCB2=1;                   //habilita IOCB RB2
     
 }
 /*-----------------------------------------------------------------------------
@@ -169,10 +160,40 @@ void motor_encendido(void)
         PORTDbits.RD4=1;
         __delay_ms(2);  
     }
-    encendido=0;
 }
 //-------
 void motor_apagado(void)
 {
     PORTD=0x00;
+}
+//-------
+void motor_retorno(void)
+{
+    for(int j;j<1000;j++)
+    {
+        //paso 1 reversa
+        PORTDbits.RD7=0;
+        PORTDbits.RD6=0;
+        PORTDbits.RD5=1;
+        PORTDbits.RD4=1;
+        __delay_ms(2);
+        //paso 2 reversa
+        PORTDbits.RD7=0;
+        PORTDbits.RD6=1;
+        PORTDbits.RD5=1;
+        PORTDbits.RD4=0;
+        __delay_ms(2);
+        //paso 3 reversa
+        PORTDbits.RD7=1;
+        PORTDbits.RD6=1;
+        PORTDbits.RD5=0;
+        PORTDbits.RD4=0;
+        __delay_ms(2);
+        //paso 4 reversa
+        PORTDbits.RD7=1;
+        PORTDbits.RD6=0;
+        PORTDbits.RD5=0;
+        PORTDbits.RD4=1;
+        __delay_ms(2);
+    }
 }

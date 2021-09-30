@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.32 build 20210201212658 
-                                                                                               Wed Sep 29 22:35:20 2021
+                                                                                               Thu Sep 30 00:27:40 2021
 
 Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1 
      1                           	processor	16F887
@@ -10,1287 +10,1429 @@ Microchip MPLAB XC8 C Compiler v2.32 (Free license) build 20210201212658 Og1
      4                           	psect	cinit,global,class=CODE,merge=1,delta=2
      5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
      6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
-     7                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
-     8                           	psect	maintext,global,class=CODE,split=1,delta=2
-     9                           	psect	text1,local,class=CODE,merge=1,delta=2
-    10                           	psect	text2,local,class=CODE,merge=1,delta=2
-    11                           	psect	text3,local,class=CODE,merge=1,delta=2
-    12                           	psect	text4,local,class=CODE,merge=1,delta=2
-    13                           	psect	text5,local,class=CODE,merge=1,delta=2
-    14                           	psect	intentry,global,class=CODE,delta=2
-    15                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
-    16                           	dabs	1,0x7E,2
-    17  0000                     
-    18                           ; Version 2.20
-    19                           ; Generated 12/02/2020 GMT
-    20                           ; 
-    21                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    22                           ; All rights reserved.
-    23                           ; 
-    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	text2,local,class=CODE,merge=1,delta=2
+    10                           	psect	text3,local,class=CODE,merge=1,delta=2
+    11                           	psect	text4,local,class=CODE,merge=1,delta=2
+    12                           	psect	text5,local,class=CODE,merge=1,delta=2
+    13                           	psect	intentry,global,class=CODE,delta=2
+    14                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    15                           	dabs	1,0x7E,2
+    16  0000                     
+    17                           ; Version 2.20
+    18                           ; Generated 12/02/2020 GMT
+    19                           ; 
+    20                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    25                           ; 
-    26                           ; Redistribution and use in source and binary forms, with or without modification, are
-    27                           ; permitted provided that the following conditions are met:
-    28                           ; 
-    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    30                           ;        conditions and the following disclaimer.
-    31                           ; 
-    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    33                           ;        of conditions and the following disclaimer in the documentation and/or other
-    34                           ;        materials provided with the distribution.
-    35                           ; 
-    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution.
+    34                           ; 
+    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    37                           ;        software without specific prior written permission.
-    38                           ; 
-    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    36                           ;        software without specific prior written permission.
+    37                           ; 
+    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; 
     47                           ; 
-    48                           ; 
-    49                           ; Code-generator required, PIC16F887 Definitions
-    50                           ; 
-    51                           ; SFR Addresses
-    52  0000                     	;# 
-    53  0001                     	;# 
-    54  0002                     	;# 
-    55  0003                     	;# 
-    56  0004                     	;# 
-    57  0005                     	;# 
-    58  0006                     	;# 
-    59  0007                     	;# 
-    60  0008                     	;# 
-    61  0009                     	;# 
-    62  000A                     	;# 
-    63  000B                     	;# 
-    64  000C                     	;# 
-    65  000D                     	;# 
+    48                           ; Code-generator required, PIC16F887 Definitions
+    49                           ; 
+    50                           ; SFR Addresses
+    51  0000                     	;# 
+    52  0001                     	;# 
+    53  0002                     	;# 
+    54  0003                     	;# 
+    55  0004                     	;# 
+    56  0005                     	;# 
+    57  0006                     	;# 
+    58  0007                     	;# 
+    59  0008                     	;# 
+    60  0009                     	;# 
+    61  000A                     	;# 
+    62  000B                     	;# 
+    63  000C                     	;# 
+    64  000D                     	;# 
+    65  000E                     	;# 
     66  000E                     	;# 
-    67  000E                     	;# 
-    68  000F                     	;# 
-    69  0010                     	;# 
-    70  0011                     	;# 
-    71  0012                     	;# 
-    72  0013                     	;# 
-    73  0014                     	;# 
+    67  000F                     	;# 
+    68  0010                     	;# 
+    69  0011                     	;# 
+    70  0012                     	;# 
+    71  0013                     	;# 
+    72  0014                     	;# 
+    73  0015                     	;# 
     74  0015                     	;# 
-    75  0015                     	;# 
-    76  0016                     	;# 
-    77  0017                     	;# 
-    78  0018                     	;# 
-    79  0019                     	;# 
-    80  001A                     	;# 
+    75  0016                     	;# 
+    76  0017                     	;# 
+    77  0018                     	;# 
+    78  0019                     	;# 
+    79  001A                     	;# 
+    80  001B                     	;# 
     81  001B                     	;# 
-    82  001B                     	;# 
-    83  001C                     	;# 
-    84  001D                     	;# 
-    85  001E                     	;# 
-    86  001F                     	;# 
-    87  0081                     	;# 
-    88  0085                     	;# 
-    89  0086                     	;# 
-    90  0087                     	;# 
-    91  0088                     	;# 
-    92  0089                     	;# 
-    93  008C                     	;# 
-    94  008D                     	;# 
-    95  008E                     	;# 
-    96  008F                     	;# 
-    97  0090                     	;# 
-    98  0091                     	;# 
-    99  0092                     	;# 
+    82  001C                     	;# 
+    83  001D                     	;# 
+    84  001E                     	;# 
+    85  001F                     	;# 
+    86  0081                     	;# 
+    87  0085                     	;# 
+    88  0086                     	;# 
+    89  0087                     	;# 
+    90  0088                     	;# 
+    91  0089                     	;# 
+    92  008C                     	;# 
+    93  008D                     	;# 
+    94  008E                     	;# 
+    95  008F                     	;# 
+    96  0090                     	;# 
+    97  0091                     	;# 
+    98  0092                     	;# 
+    99  0093                     	;# 
    100  0093                     	;# 
    101  0093                     	;# 
-   102  0093                     	;# 
-   103  0094                     	;# 
-   104  0095                     	;# 
-   105  0096                     	;# 
-   106  0097                     	;# 
-   107  0098                     	;# 
-   108  0099                     	;# 
-   109  009A                     	;# 
-   110  009B                     	;# 
-   111  009C                     	;# 
-   112  009D                     	;# 
-   113  009E                     	;# 
-   114  009F                     	;# 
-   115  0105                     	;# 
-   116  0107                     	;# 
-   117  0108                     	;# 
-   118  0109                     	;# 
+   102  0094                     	;# 
+   103  0095                     	;# 
+   104  0096                     	;# 
+   105  0097                     	;# 
+   106  0098                     	;# 
+   107  0099                     	;# 
+   108  009A                     	;# 
+   109  009B                     	;# 
+   110  009C                     	;# 
+   111  009D                     	;# 
+   112  009E                     	;# 
+   113  009F                     	;# 
+   114  0105                     	;# 
+   115  0107                     	;# 
+   116  0108                     	;# 
+   117  0109                     	;# 
+   118  010C                     	;# 
    119  010C                     	;# 
-   120  010C                     	;# 
-   121  010D                     	;# 
-   122  010E                     	;# 
-   123  010F                     	;# 
-   124  0185                     	;# 
-   125  0187                     	;# 
-   126  0188                     	;# 
-   127  0189                     	;# 
-   128  018C                     	;# 
-   129  018D                     	;# 
-   130  0000                     	;# 
-   131  0001                     	;# 
-   132  0002                     	;# 
-   133  0003                     	;# 
-   134  0004                     	;# 
-   135  0005                     	;# 
-   136  0006                     	;# 
-   137  0007                     	;# 
-   138  0008                     	;# 
-   139  0009                     	;# 
-   140  000A                     	;# 
-   141  000B                     	;# 
-   142  000C                     	;# 
-   143  000D                     	;# 
+   120  010D                     	;# 
+   121  010E                     	;# 
+   122  010F                     	;# 
+   123  0185                     	;# 
+   124  0187                     	;# 
+   125  0188                     	;# 
+   126  0189                     	;# 
+   127  018C                     	;# 
+   128  018D                     	;# 
+   129  0000                     	;# 
+   130  0001                     	;# 
+   131  0002                     	;# 
+   132  0003                     	;# 
+   133  0004                     	;# 
+   134  0005                     	;# 
+   135  0006                     	;# 
+   136  0007                     	;# 
+   137  0008                     	;# 
+   138  0009                     	;# 
+   139  000A                     	;# 
+   140  000B                     	;# 
+   141  000C                     	;# 
+   142  000D                     	;# 
+   143  000E                     	;# 
    144  000E                     	;# 
-   145  000E                     	;# 
-   146  000F                     	;# 
-   147  0010                     	;# 
-   148  0011                     	;# 
-   149  0012                     	;# 
-   150  0013                     	;# 
-   151  0014                     	;# 
+   145  000F                     	;# 
+   146  0010                     	;# 
+   147  0011                     	;# 
+   148  0012                     	;# 
+   149  0013                     	;# 
+   150  0014                     	;# 
+   151  0015                     	;# 
    152  0015                     	;# 
-   153  0015                     	;# 
-   154  0016                     	;# 
-   155  0017                     	;# 
-   156  0018                     	;# 
-   157  0019                     	;# 
-   158  001A                     	;# 
+   153  0016                     	;# 
+   154  0017                     	;# 
+   155  0018                     	;# 
+   156  0019                     	;# 
+   157  001A                     	;# 
+   158  001B                     	;# 
    159  001B                     	;# 
-   160  001B                     	;# 
-   161  001C                     	;# 
-   162  001D                     	;# 
-   163  001E                     	;# 
-   164  001F                     	;# 
-   165  0081                     	;# 
-   166  0085                     	;# 
-   167  0086                     	;# 
-   168  0087                     	;# 
-   169  0088                     	;# 
-   170  0089                     	;# 
-   171  008C                     	;# 
-   172  008D                     	;# 
-   173  008E                     	;# 
-   174  008F                     	;# 
-   175  0090                     	;# 
-   176  0091                     	;# 
-   177  0092                     	;# 
+   160  001C                     	;# 
+   161  001D                     	;# 
+   162  001E                     	;# 
+   163  001F                     	;# 
+   164  0081                     	;# 
+   165  0085                     	;# 
+   166  0086                     	;# 
+   167  0087                     	;# 
+   168  0088                     	;# 
+   169  0089                     	;# 
+   170  008C                     	;# 
+   171  008D                     	;# 
+   172  008E                     	;# 
+   173  008F                     	;# 
+   174  0090                     	;# 
+   175  0091                     	;# 
+   176  0092                     	;# 
+   177  0093                     	;# 
    178  0093                     	;# 
    179  0093                     	;# 
-   180  0093                     	;# 
-   181  0094                     	;# 
-   182  0095                     	;# 
-   183  0096                     	;# 
-   184  0097                     	;# 
-   185  0098                     	;# 
-   186  0099                     	;# 
-   187  009A                     	;# 
-   188  009B                     	;# 
-   189  009C                     	;# 
-   190  009D                     	;# 
-   191  009E                     	;# 
-   192  009F                     	;# 
-   193  0105                     	;# 
-   194  0107                     	;# 
-   195  0108                     	;# 
-   196  0109                     	;# 
+   180  0094                     	;# 
+   181  0095                     	;# 
+   182  0096                     	;# 
+   183  0097                     	;# 
+   184  0098                     	;# 
+   185  0099                     	;# 
+   186  009A                     	;# 
+   187  009B                     	;# 
+   188  009C                     	;# 
+   189  009D                     	;# 
+   190  009E                     	;# 
+   191  009F                     	;# 
+   192  0105                     	;# 
+   193  0107                     	;# 
+   194  0108                     	;# 
+   195  0109                     	;# 
+   196  010C                     	;# 
    197  010C                     	;# 
-   198  010C                     	;# 
-   199  010D                     	;# 
-   200  010E                     	;# 
-   201  010F                     	;# 
-   202  0185                     	;# 
-   203  0187                     	;# 
-   204  0188                     	;# 
-   205  0189                     	;# 
-   206  018C                     	;# 
-   207  018D                     	;# 
-   208  0000                     	;# 
-   209  0001                     	;# 
-   210  0002                     	;# 
-   211  0003                     	;# 
-   212  0004                     	;# 
-   213  0005                     	;# 
-   214  0006                     	;# 
-   215  0007                     	;# 
-   216  0008                     	;# 
-   217  0009                     	;# 
-   218  000A                     	;# 
-   219  000B                     	;# 
-   220  000C                     	;# 
-   221  000D                     	;# 
+   198  010D                     	;# 
+   199  010E                     	;# 
+   200  010F                     	;# 
+   201  0185                     	;# 
+   202  0187                     	;# 
+   203  0188                     	;# 
+   204  0189                     	;# 
+   205  018C                     	;# 
+   206  018D                     	;# 
+   207  0000                     	;# 
+   208  0001                     	;# 
+   209  0002                     	;# 
+   210  0003                     	;# 
+   211  0004                     	;# 
+   212  0005                     	;# 
+   213  0006                     	;# 
+   214  0007                     	;# 
+   215  0008                     	;# 
+   216  0009                     	;# 
+   217  000A                     	;# 
+   218  000B                     	;# 
+   219  000C                     	;# 
+   220  000D                     	;# 
+   221  000E                     	;# 
    222  000E                     	;# 
-   223  000E                     	;# 
-   224  000F                     	;# 
-   225  0010                     	;# 
-   226  0011                     	;# 
-   227  0012                     	;# 
-   228  0013                     	;# 
-   229  0014                     	;# 
+   223  000F                     	;# 
+   224  0010                     	;# 
+   225  0011                     	;# 
+   226  0012                     	;# 
+   227  0013                     	;# 
+   228  0014                     	;# 
+   229  0015                     	;# 
    230  0015                     	;# 
-   231  0015                     	;# 
-   232  0016                     	;# 
-   233  0017                     	;# 
-   234  0018                     	;# 
-   235  0019                     	;# 
-   236  001A                     	;# 
+   231  0016                     	;# 
+   232  0017                     	;# 
+   233  0018                     	;# 
+   234  0019                     	;# 
+   235  001A                     	;# 
+   236  001B                     	;# 
    237  001B                     	;# 
-   238  001B                     	;# 
-   239  001C                     	;# 
-   240  001D                     	;# 
-   241  001E                     	;# 
-   242  001F                     	;# 
-   243  0081                     	;# 
-   244  0085                     	;# 
-   245  0086                     	;# 
-   246  0087                     	;# 
-   247  0088                     	;# 
-   248  0089                     	;# 
-   249  008C                     	;# 
-   250  008D                     	;# 
-   251  008E                     	;# 
-   252  008F                     	;# 
-   253  0090                     	;# 
-   254  0091                     	;# 
-   255  0092                     	;# 
+   238  001C                     	;# 
+   239  001D                     	;# 
+   240  001E                     	;# 
+   241  001F                     	;# 
+   242  0081                     	;# 
+   243  0085                     	;# 
+   244  0086                     	;# 
+   245  0087                     	;# 
+   246  0088                     	;# 
+   247  0089                     	;# 
+   248  008C                     	;# 
+   249  008D                     	;# 
+   250  008E                     	;# 
+   251  008F                     	;# 
+   252  0090                     	;# 
+   253  0091                     	;# 
+   254  0092                     	;# 
+   255  0093                     	;# 
    256  0093                     	;# 
    257  0093                     	;# 
-   258  0093                     	;# 
-   259  0094                     	;# 
-   260  0095                     	;# 
-   261  0096                     	;# 
-   262  0097                     	;# 
-   263  0098                     	;# 
-   264  0099                     	;# 
-   265  009A                     	;# 
-   266  009B                     	;# 
-   267  009C                     	;# 
-   268  009D                     	;# 
-   269  009E                     	;# 
-   270  009F                     	;# 
-   271  0105                     	;# 
-   272  0107                     	;# 
-   273  0108                     	;# 
-   274  0109                     	;# 
+   258  0094                     	;# 
+   259  0095                     	;# 
+   260  0096                     	;# 
+   261  0097                     	;# 
+   262  0098                     	;# 
+   263  0099                     	;# 
+   264  009A                     	;# 
+   265  009B                     	;# 
+   266  009C                     	;# 
+   267  009D                     	;# 
+   268  009E                     	;# 
+   269  009F                     	;# 
+   270  0105                     	;# 
+   271  0107                     	;# 
+   272  0108                     	;# 
+   273  0109                     	;# 
+   274  010C                     	;# 
    275  010C                     	;# 
-   276  010C                     	;# 
-   277  010D                     	;# 
-   278  010E                     	;# 
-   279  010F                     	;# 
-   280  0185                     	;# 
-   281  0187                     	;# 
-   282  0188                     	;# 
-   283  0189                     	;# 
-   284  018C                     	;# 
-   285  018D                     	;# 
-   286  0008                     _PORTDbits	set	8
-   287  0008                     _PORTD	set	8
-   288  0005                     _PORTA	set	5
-   289  0006                     _PORTBbits	set	6
-   290  0006                     _PORTB	set	6
-   291  000B                     _INTCONbits	set	11
-   292  008F                     _OSCCONbits	set	143
-   293  0096                     _IOCBbits	set	150
-   294  0095                     _WPUBbits	set	149
-   295  0081                     _OPTION_REGbits	set	129
-   296  0085                     _TRISA	set	133
-   297  0088                     _TRISD	set	136
-   298  0086                     _TRISBbits	set	134
-   299  0189                     _ANSELH	set	393
-   300  0188                     _ANSEL	set	392
-   301                           
-   302                           	psect	cinit
-   303  0011                     start_initialization:	
-   304                           ; #config settings
-   305                           
-   306  0011                     __initialization:
-   307                           
-   308                           ; Clear objects allocated to COMMON
-   309  0011  01F6               	clrf	__pbssCOMMON& (0+127)
-   310  0012  01F7               	clrf	(__pbssCOMMON+1)& (0+127)
-   311  0013  01F8               	clrf	(__pbssCOMMON+2)& (0+127)
-   312  0014                     end_of_initialization:	
-   313                           ;End of C runtime variable initialization code
-   314                           
-   315  0014                     __end_of__initialization:
-   316  0014  0183               	clrf	3
-   317  0015  120A  118A  28B0   	ljmp	_main	;jump to C main() function
-   318                           
-   319                           	psect	bssCOMMON
-   320  0076                     __pbssCOMMON:
-   321  0076                     _encendido:
-   322  0076                     	ds	1
-   323  0077                     _antirrebote2:
-   324  0077                     	ds	1
-   325  0078                     _antirrebote1:
-   326  0078                     	ds	1
-   327                           
-   328                           	psect	cstackCOMMON
-   329  0070                     __pcstackCOMMON:
-   330  0070                     ?_setup:
-   331  0070                     ?_motor_encendido:	
-   332                           ; 1 bytes @ 0x0
-   333                           
-   334  0070                     ?_motor_apagado:	
-   335                           ; 1 bytes @ 0x0
-   336                           
-   337  0070                     ?_osc_config:	
-   338                           ; 1 bytes @ 0x0
-   339                           
-   340  0070                     ?_isr:	
-   341                           ; 1 bytes @ 0x0
-   342                           
-   343  0070                     ??_isr:	
-   344                           ; 1 bytes @ 0x0
-   345                           
-   346  0070                     ?_main:	
-   347                           ; 1 bytes @ 0x0
+   276  010D                     	;# 
+   277  010E                     	;# 
+   278  010F                     	;# 
+   279  0185                     	;# 
+   280  0187                     	;# 
+   281  0188                     	;# 
+   282  0189                     	;# 
+   283  018C                     	;# 
+   284  018D                     	;# 
+   285  0008                     _PORTDbits	set	8
+   286  0008                     _PORTD	set	8
+   287  0009                     _PORTE	set	9
+   288  0006                     _PORTBbits	set	6
+   289  0006                     _PORTB	set	6
+   290  000B                     _INTCONbits	set	11
+   291  008F                     _OSCCONbits	set	143
+   292  0096                     _IOCBbits	set	150
+   293  0095                     _WPUBbits	set	149
+   294  0081                     _OPTION_REGbits	set	129
+   295  0089                     _TRISE	set	137
+   296  0088                     _TRISD	set	136
+   297  0086                     _TRISBbits	set	134
+   298  0189                     _ANSELH	set	393
+   299  0188                     _ANSEL	set	392
+   300                           
+   301                           	psect	cinit
+   302  0011                     start_initialization:	
+   303                           ; #config settings
+   304                           
+   305  0011                     __initialization:
+   306                           
+   307                           ; Clear objects allocated to COMMON
+   308  0011  01F9               	clrf	__pbssCOMMON& (0+127)
+   309  0012  01FA               	clrf	(__pbssCOMMON+1)& (0+127)
+   310  0013  01FB               	clrf	(__pbssCOMMON+2)& (0+127)
+   311  0014                     end_of_initialization:	
+   312                           ;End of C runtime variable initialization code
+   313                           
+   314  0014                     __end_of__initialization:
+   315  0014  0183               	clrf	3
+   316  0015  120A  118A  28F3   	ljmp	_main	;jump to C main() function
+   317                           
+   318                           	psect	bssCOMMON
+   319  0079                     __pbssCOMMON:
+   320  0079                     _encendido:
+   321  0079                     	ds	1
+   322  007A                     _antirrebote2:
+   323  007A                     	ds	1
+   324  007B                     _antirrebote1:
+   325  007B                     	ds	1
+   326                           
+   327                           	psect	cstackCOMMON
+   328  0070                     __pcstackCOMMON:
+   329  0070                     ?_setup:
+   330  0070                     ?_motor_encendido:	
+   331                           ; 1 bytes @ 0x0
+   332                           
+   333  0070                     ?_motor_retorno:	
+   334                           ; 1 bytes @ 0x0
+   335                           
+   336  0070                     ?_osc_config:	
+   337                           ; 1 bytes @ 0x0
+   338                           
+   339  0070                     ?_isr:	
+   340                           ; 1 bytes @ 0x0
+   341                           
+   342  0070                     ??_isr:	
+   343                           ; 1 bytes @ 0x0
+   344                           
+   345  0070                     ?_main:	
+   346                           ; 1 bytes @ 0x0
+   347                           
    348                           
-   349                           
-   350                           ; 1 bytes @ 0x0
-   351  0070                     	ds	5
-   352  0075                     ??_motor_apagado:
-   353  0075                     osc_config@freq:	
-   354                           ; 1 bytes @ 0x5
-   355                           
-   356                           
-   357                           ; 1 bytes @ 0x5
-   358  0075                     	ds	1
-   359  0076                     ??_setup:
-   360                           
-   361                           	psect	cstackBANK0
-   362  0020                     __pcstackBANK0:	
-   363                           ; 1 bytes @ 0x6
+   349                           ; 1 bytes @ 0x0
+   350  0070                     	ds	5
+   351  0075                     ??_motor_encendido:
+   352  0075                     ??_motor_retorno:	
+   353                           ; 1 bytes @ 0x5
+   354                           
+   355  0075                     ??_osc_config:	
+   356                           ; 1 bytes @ 0x5
+   357                           
+   358                           
+   359                           ; 1 bytes @ 0x5
+   360  0075                     	ds	2
+   361  0077                     osc_config@freq:
+   362  0077                     motor_encendido@i:	
+   363                           ; 1 bytes @ 0x7
    364                           
-   365  0020                     ??_motor_encendido:
-   366  0020                     ??_osc_config:	
-   367                           ; 1 bytes @ 0x0
+   365  0077                     motor_retorno@j:	
+   366                           ; 2 bytes @ 0x7
+   367                           
    368                           
-   369                           
-   370                           ; 1 bytes @ 0x0
-   371  0020                     	ds	2
-   372  0022                     motor_encendido@i:
-   373                           
-   374                           ; 2 bytes @ 0x2
-   375  0022                     	ds	2
-   376  0024                     ??_main:
-   377                           
-   378                           ; 1 bytes @ 0x4
-   379  0024                     	ds	1
-   380                           
-   381                           	psect	maintext
-   382  00B0                     __pmaintext:	
-   383 ;;
-   384 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
-   385 ;;
-   386 ;; *************** function _main *****************
-   387 ;; Defined at:
-   388 ;;		line 79 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
-   389 ;; Parameters:    Size  Location     Type
-   390 ;;		None
-   391 ;; Auto vars:     Size  Location     Type
-   392 ;;		None
-   393 ;; Return value:  Size  Location     Type
-   394 ;;                  1    wreg      void 
-   395 ;; Registers used:
-   396 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
-   397 ;; Tracked objects:
-   398 ;;		On entry : B00/0
-   399 ;;		On exit  : 0/0
-   400 ;;		Unchanged: 0/0
-   401 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   402 ;;      Params:         0       0       0       0       0
-   403 ;;      Locals:         0       0       0       0       0
-   404 ;;      Temps:          0       1       0       0       0
-   405 ;;      Totals:         0       1       0       0       0
-   406 ;;Total ram usage:        1 bytes
-   407 ;; Hardware stack levels required when called: 3
-   408 ;; This function calls:
-   409 ;;		_motor_apagado
-   410 ;;		_motor_encendido
-   411 ;;		_setup
-   412 ;; This function is called by:
-   413 ;;		Startup code after reset
-   414 ;; This function uses a non-reentrant model
-   415 ;;
-   416                           
-   417                           
-   418                           ;psect for function _main
-   419  00B0                     _main:
-   420  00B0                     l1016:	
-   421                           ;incstack = 0
-   422                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-   423                           
-   424                           
-   425                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 80:     
+   369                           ; 2 bytes @ 0x7
+   370  0077                     	ds	1
+   371  0078                     ??_setup:
+   372                           
+   373                           ; 1 bytes @ 0x8
+   374  0078                     	ds	1
+   375  0079                     ??_main:
+   376                           
+   377                           	psect	maintext
+   378  00F3                     __pmaintext:	
+   379                           ; 1 bytes @ 0x9
+   380 ;;
+   381 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   382 ;;
+   383 ;; *************** function _main *****************
+   384 ;; Defined at:
+   385 ;;		line 80 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
+   386 ;; Parameters:    Size  Location     Type
+   387 ;;		None
+   388 ;; Auto vars:     Size  Location     Type
+   389 ;;		None
+   390 ;; Return value:  Size  Location     Type
+   391 ;;                  1    wreg      void 
+   392 ;; Registers used:
+   393 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   394 ;; Tracked objects:
+   395 ;;		On entry : B00/0
+   396 ;;		On exit  : 0/0
+   397 ;;		Unchanged: 0/0
+   398 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   399 ;;      Params:         0       0       0       0       0
+   400 ;;      Locals:         0       0       0       0       0
+   401 ;;      Temps:          0       0       0       0       0
+   402 ;;      Totals:         0       0       0       0       0
+   403 ;;Total ram usage:        0 bytes
+   404 ;; Hardware stack levels required when called: 3
+   405 ;; This function calls:
+   406 ;;		_motor_encendido
+   407 ;;		_motor_retorno
+   408 ;;		_setup
+   409 ;; This function is called by:
+   410 ;;		Startup code after reset
+   411 ;; This function uses a non-reentrant model
+   412 ;;
+   413                           
+   414                           
+   415                           ;psect for function _main
+   416  00F3                     _main:
+   417  00F3                     l813:	
+   418                           ;incstack = 0
+   419                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   420                           
+   421                           
+   422                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 82:     
       +                          setup();
-   426  00B0  120A  118A  20E4  120A  118A  	fcall	_setup
-   427  00B5                     l1018:
-   428                           
-   429                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 82:     
-      +                          {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 83:    
-      +                               if (antirrebote1==1 && PORTBbits.RB1==0)
-   430  00B5  0378               	decf	_antirrebote1,w
-   431  00B6  1D03               	btfss	3,2
-   432  00B7  28B9               	goto	u121
-   433  00B8  28BA               	goto	u120
-   434  00B9                     u121:
-   435  00B9  28C8               	goto	l1028
-   436  00BA                     u120:
-   437  00BA                     l1020:
-   438  00BA  1283               	bcf	3,5	;RP0=0, select bank0
-   439  00BB  1303               	bcf	3,6	;RP1=0, select bank0
-   440  00BC  1886               	btfsc	6,1	;volatile
-   441  00BD  28BF               	goto	u131
-   442  00BE  28C0               	goto	u130
-   443  00BF                     u131:
-   444  00BF  28C8               	goto	l1028
-   445  00C0                     u130:
-   446  00C0                     l1022:
-   447                           
-   448                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 84:     
-      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 85:
-      +                                       antirrebote1=0;
-   449  00C0  01F8               	clrf	_antirrebote1
-   450  00C1                     l1024:
+   423  00F3  120A  118A  214D  120A  118A  	fcall	_setup
+   424  00F8                     l815:
+   425                           
+   426                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 84:     
+      +                          {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 85:    
+      +                               if (antirrebote1==1 && PORTBbits.RB1==0 && PORTBbits.RB2==1)
+   427  00F8  037B               	decf	_antirrebote1,w
+   428  00F9  1D03               	btfss	3,2
+   429  00FA  28FC               	goto	u41
+   430  00FB  28FD               	goto	u40
+   431  00FC                     u41:
+   432  00FC  290D               	goto	l825
+   433  00FD                     u40:
+   434  00FD                     l817:
+   435  00FD  1283               	bcf	3,5	;RP0=0, select bank0
+   436  00FE  1303               	bcf	3,6	;RP1=0, select bank0
+   437  00FF  1886               	btfsc	6,1	;volatile
+   438  0100  2902               	goto	u51
+   439  0101  2903               	goto	u50
+   440  0102                     u51:
+   441  0102  290D               	goto	l825
+   442  0103                     u50:
+   443  0103                     l819:
+   444  0103  1D06               	btfss	6,2	;volatile
+   445  0104  2906               	goto	u61
+   446  0105  2907               	goto	u60
+   447  0106                     u61:
+   448  0106  290D               	goto	l825
+   449  0107                     u60:
+   450  0107                     l821:
    451                           
    452                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 86:     
-      +                                  encendido++;
-   453  00C1  3001               	movlw	1
-   454  00C2  00A4               	movwf	??_main
-   455  00C3  0824               	movf	??_main,w
-   456  00C4  07F6               	addwf	_encendido,f
-   457  00C5                     l1026:
-   458                           
-   459                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 87:     
-      +                                  PORTA=encendido;
-   460  00C5  0876               	movf	_encendido,w
-   461  00C6  0085               	movwf	5	;volatile
-   462                           
-   463                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 88:     
-      +                              }
-   464  00C7  28C9               	goto	l1030
-   465  00C8                     l1028:
-   466                           
-   467                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 90:     
-      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 91:
-      +                                       encendido=0;
-   468  00C8  01F6               	clrf	_encendido
-   469  00C9                     l1030:
-   470                           
-   471                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 94:     
-      +                              if (encendido==1)
-   472  00C9  0376               	decf	_encendido,w
-   473  00CA  1D03               	btfss	3,2
-   474  00CB  28CD               	goto	u141
-   475  00CC  28CE               	goto	u140
-   476  00CD                     u141:
-   477  00CD  28D4               	goto	l1034
-   478  00CE                     u140:
-   479  00CE                     l1032:
-   480                           
-   481                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 95:     
-      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 96:
-      +                                       motor_encendido();
-   482  00CE  120A  118A  2018  120A  118A  	fcall	_motor_encendido
-   483                           
-   484                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 97:     
-      +                              }
-   485  00D3  28B5               	goto	l1018
-   486  00D4                     l1034:
-   487  00D4  3002               	movlw	2
-   488  00D5  0676               	xorwf	_encendido,w
-   489  00D6  1D03               	btfss	3,2
-   490  00D7  28D9               	goto	u151
-   491  00D8  28DA               	goto	u150
-   492  00D9                     u151:
-   493  00D9  28B5               	goto	l1018
-   494  00DA                     u150:
-   495  00DA                     l1036:
-   496                           
-   497                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 99:     
-      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 100
-      +                          :             encendido=0;
-   498  00DA  01F6               	clrf	_encendido
-   499  00DB                     l1038:
-   500                           
-   501                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 101:    
-      +                                   motor_apagado();
-   502  00DB  120A  118A  2126  120A  118A  	fcall	_motor_apagado
-   503  00E0  28B5               	goto	l1018
-   504  00E1  120A  118A  280E   	ljmp	start
-   505  00E4                     __end_of_main:
-   506                           
-   507                           	psect	text1
-   508  00E4                     __ptext1:	
-   509 ;; *************** function _setup *****************
-   510 ;; Defined at:
-   511 ;;		line 110 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
-   512 ;; Parameters:    Size  Location     Type
-   513 ;;		None
-   514 ;; Auto vars:     Size  Location     Type
-   515 ;;		None
-   516 ;; Return value:  Size  Location     Type
-   517 ;;                  1    wreg      void 
-   518 ;; Registers used:
-   519 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-   520 ;; Tracked objects:
-   521 ;;		On entry : 0/0
-   522 ;;		On exit  : 0/0
-   523 ;;		Unchanged: 0/0
-   524 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   525 ;;      Params:         0       0       0       0       0
-   526 ;;      Locals:         0       0       0       0       0
-   527 ;;      Temps:          0       0       0       0       0
-   528 ;;      Totals:         0       0       0       0       0
-   529 ;;Total ram usage:        0 bytes
-   530 ;; Hardware stack levels used: 1
-   531 ;; Hardware stack levels required when called: 2
-   532 ;; This function calls:
-   533 ;;		_osc_config
-   534 ;; This function is called by:
-   535 ;;		_main
-   536 ;; This function uses a non-reentrant model
-   537 ;;
-   538                           
-   539                           
-   540                           ;psect for function _setup
-   541  00E4                     _setup:
-   542  00E4                     l956:	
-   543                           ;incstack = 0
-   544                           ; Regs used in _setup: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-   545                           
-   546                           
-   547                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 113:    
+      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 87:
+      +                                       antirrebote1=0;
+   453  0107  01FB               	clrf	_antirrebote1
+   454  0108                     l823:
+   455                           
+   456                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 88:     
+      +                                  motor_encendido();
+   457  0108  120A  118A  206A  120A  118A  	fcall	_motor_encendido
+   458  010D                     l825:
+   459                           
+   460                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 91:     
+      +                              if (antirrebote2==1 && PORTBbits.RB2==0 && PORTBbits.RB1==1)
+   461  010D  037A               	decf	_antirrebote2,w
+   462  010E  1D03               	btfss	3,2
+   463  010F  2911               	goto	u71
+   464  0110  2912               	goto	u70
+   465  0111                     u71:
+   466  0111  28F8               	goto	l815
+   467  0112                     u70:
+   468  0112                     l827:
+   469  0112  1283               	bcf	3,5	;RP0=0, select bank0
+   470  0113  1303               	bcf	3,6	;RP1=0, select bank0
+   471  0114  1906               	btfsc	6,2	;volatile
+   472  0115  2917               	goto	u81
+   473  0116  2918               	goto	u80
+   474  0117                     u81:
+   475  0117  28F8               	goto	l815
+   476  0118                     u80:
+   477  0118                     l829:
+   478  0118  1C86               	btfss	6,1	;volatile
+   479  0119  291B               	goto	u91
+   480  011A  291C               	goto	u90
+   481  011B                     u91:
+   482  011B  28F8               	goto	l815
+   483  011C                     u90:
+   484  011C                     l831:
+   485                           
+   486                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 92:     
+      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 93:
+      +                                       antirrebote2=0;
+   487  011C  01FA               	clrf	_antirrebote2
+   488  011D                     l833:
+   489                           
+   490                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 94:     
+      +                                  motor_retorno();
+   491  011D  120A  118A  2018  120A  118A  	fcall	_motor_retorno
+   492  0122  28F8               	goto	l815
+   493  0123  120A  118A  280E   	ljmp	start
+   494  0126                     __end_of_main:
+   495                           
+   496                           	psect	text1
+   497  014D                     __ptext1:	
+   498 ;; *************** function _setup *****************
+   499 ;; Defined at:
+   500 ;;		line 101 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
+   501 ;; Parameters:    Size  Location     Type
+   502 ;;		None
+   503 ;; Auto vars:     Size  Location     Type
+   504 ;;		None
+   505 ;; Return value:  Size  Location     Type
+   506 ;;                  1    wreg      void 
+   507 ;; Registers used:
+   508 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   509 ;; Tracked objects:
+   510 ;;		On entry : 0/0
+   511 ;;		On exit  : 0/0
+   512 ;;		Unchanged: 0/0
+   513 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   514 ;;      Params:         0       0       0       0       0
+   515 ;;      Locals:         0       0       0       0       0
+   516 ;;      Temps:          0       0       0       0       0
+   517 ;;      Totals:         0       0       0       0       0
+   518 ;;Total ram usage:        0 bytes
+   519 ;; Hardware stack levels used: 1
+   520 ;; Hardware stack levels required when called: 2
+   521 ;; This function calls:
+   522 ;;		_osc_config
+   523 ;; This function is called by:
+   524 ;;		_main
+   525 ;; This function uses a non-reentrant model
+   526 ;;
+   527                           
+   528                           
+   529                           ;psect for function _setup
+   530  014D                     _setup:
+   531  014D                     l709:	
+   532                           ;incstack = 0
+   533                           ; Regs used in _setup: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   534                           
+   535                           
+   536                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 104:    
       +                           ANSEL=0;
-   548  00E4  1683               	bsf	3,5	;RP0=1, select bank3
-   549  00E5  1703               	bsf	3,6	;RP1=1, select bank3
-   550  00E6  0188               	clrf	8	;volatile
-   551                           
-   552                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 114:    
+   537  014D  1683               	bsf	3,5	;RP0=1, select bank3
+   538  014E  1703               	bsf	3,6	;RP1=1, select bank3
+   539  014F  0188               	clrf	8	;volatile
+   540                           
+   541                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 105:    
       +                           ANSELH=0;
-   553  00E7  0189               	clrf	9	;volatile
-   554  00E8                     l958:
-   555                           
-   556                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 116:    
-      +                           TRISBbits.TRISB0=1;
-   557  00E8  1683               	bsf	3,5	;RP0=1, select bank1
-   558  00E9  1303               	bcf	3,6	;RP1=0, select bank1
-   559  00EA  1406               	bsf	6,0	;volatile
-   560  00EB                     l960:
-   561                           
-   562                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 117:    
+   542  0150  0189               	clrf	9	;volatile
+   543  0151                     l711:
+   544                           
+   545                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 107:    
       +                           TRISBbits.TRISB1=1;
-   563  00EB  1486               	bsf	6,1	;volatile
-   564                           
-   565                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 118:    
+   546  0151  1683               	bsf	3,5	;RP0=1, select bank1
+   547  0152  1303               	bcf	3,6	;RP1=0, select bank1
+   548  0153  1486               	bsf	6,1	;volatile
+   549  0154                     l713:
+   550                           
+   551                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 108:    
+      +                           TRISBbits.TRISB2=1;
+   552  0154  1506               	bsf	6,2	;volatile
+   553                           
+   554                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 109:    
       +                           TRISD=0;
-   566  00EC  0188               	clrf	8	;volatile
-   567                           
-   568                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 119:    
-      +                           TRISA=0;
-   569  00ED  0185               	clrf	5	;volatile
-   570                           
-   571                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 121:    
-      +                           PORTA=0;
-   572  00EE  1283               	bcf	3,5	;RP0=0, select bank0
-   573  00EF  1303               	bcf	3,6	;RP1=0, select bank0
-   574  00F0  0185               	clrf	5	;volatile
-   575                           
-   576                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 122:    
+   555  0155  0188               	clrf	8	;volatile
+   556                           
+   557                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 110:    
+      +                           TRISE=0;
+   558  0156  0189               	clrf	9	;volatile
+   559                           
+   560                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 112:    
+      +                           PORTE=0;
+   561  0157  1283               	bcf	3,5	;RP0=0, select bank0
+   562  0158  1303               	bcf	3,6	;RP1=0, select bank0
+   563  0159  0189               	clrf	9	;volatile
+   564                           
+   565                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 113:    
       +                           PORTB=0;
-   577  00F1  0186               	clrf	6	;volatile
-   578                           
-   579                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 123:    
+   566  015A  0186               	clrf	6	;volatile
+   567                           
+   568                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 114:    
       +                           PORTD=0;
-   580  00F2  0188               	clrf	8	;volatile
-   581  00F3                     l962:
-   582                           
-   583                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 125:    
+   569  015B  0188               	clrf	8	;volatile
+   570  015C                     l715:
+   571                           
+   572                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 116:    
       +                           osc_config(8);
-   584  00F3  3008               	movlw	8
-   585  00F4  120A  118A  2077  120A  118A  	fcall	_osc_config
-   586  00F9                     l964:
-   587                           
-   588                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 127:    
+   573  015C  3008               	movlw	8
+   574  015D  120A  118A  20BC  120A  118A  	fcall	_osc_config
+   575  0162                     l717:
+   576                           
+   577                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 118:    
       +                           OPTION_REGbits.nRBPU=0;
-   589  00F9  1683               	bsf	3,5	;RP0=1, select bank1
-   590  00FA  1303               	bcf	3,6	;RP1=0, select bank1
-   591  00FB  1381               	bcf	1,7	;volatile
-   592  00FC                     l966:
-   593                           
-   594                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 128:    
-      +                           WPUBbits.WPUB0=1;
-   595  00FC  1415               	bsf	21,0	;volatile
-   596  00FD                     l968:
-   597                           
-   598                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 129:    
+   578  0162  1683               	bsf	3,5	;RP0=1, select bank1
+   579  0163  1303               	bcf	3,6	;RP1=0, select bank1
+   580  0164  1381               	bcf	1,7	;volatile
+   581  0165                     l719:
+   582                           
+   583                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 119:    
       +                           WPUBbits.WPUB1=1;
-   599  00FD  1495               	bsf	21,1	;volatile
-   600  00FE                     l970:
-   601                           
-   602                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 131:    
+   584  0165  1495               	bsf	21,1	;volatile
+   585  0166                     l721:
+   586                           
+   587                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 120:    
+      +                           WPUBbits.WPUB2=1;
+   588  0166  1515               	bsf	21,2	;volatile
+   589  0167                     l723:
+   590                           
+   591                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 122:    
       +                           INTCONbits.GIE=1;
-   603  00FE  178B               	bsf	11,7	;volatile
-   604  00FF                     l972:
-   605                           
-   606                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 132:    
+   592  0167  178B               	bsf	11,7	;volatile
+   593  0168                     l725:
+   594                           
+   595                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 123:    
       +                           INTCONbits.PEIE = 1;
-   607  00FF  170B               	bsf	11,6	;volatile
-   608  0100                     l974:
-   609                           
-   610                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 133:    
+   596  0168  170B               	bsf	11,6	;volatile
+   597  0169                     l727:
+   598                           
+   599                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 124:    
       +                           INTCONbits.RBIE=1;
-   611  0100  158B               	bsf	11,3	;volatile
-   612  0101                     l976:
-   613                           
-   614                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 134:    
+   600  0169  158B               	bsf	11,3	;volatile
+   601  016A                     l729:
+   602                           
+   603                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 125:    
       +                           INTCONbits.RBIF=0;
-   615  0101  100B               	bcf	11,0	;volatile
-   616  0102                     l978:
-   617                           
-   618                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 135:    
-      +                           IOCBbits.IOCB0=1;
-   619  0102  1416               	bsf	22,0	;volatile
-   620  0103                     l980:
-   621                           
-   622                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 136:    
+   604  016A  100B               	bcf	11,0	;volatile
+   605  016B                     l731:
+   606                           
+   607                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 126:    
       +                           IOCBbits.IOCB1=1;
-   623  0103  1496               	bsf	22,1	;volatile
-   624  0104                     l69:
-   625  0104  0008               	return
-   626  0105                     __end_of_setup:
-   627                           
-   628                           	psect	text2
-   629  0077                     __ptext2:	
-   630 ;; *************** function _osc_config *****************
-   631 ;; Defined at:
-   632 ;;		line 16 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c"
-   633 ;; Parameters:    Size  Location     Type
-   634 ;;  freq            1    wreg     unsigned char 
-   635 ;; Auto vars:     Size  Location     Type
-   636 ;;  freq            1    5[COMMON] unsigned char 
-   637 ;; Return value:  Size  Location     Type
-   638 ;;                  1    wreg      void 
-   639 ;; Registers used:
-   640 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-   641 ;; Tracked objects:
-   642 ;;		On entry : 0/0
-   643 ;;		On exit  : 0/0
-   644 ;;		Unchanged: 0/0
-   645 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   646 ;;      Params:         0       0       0       0       0
-   647 ;;      Locals:         1       0       0       0       0
-   648 ;;      Temps:          0       2       0       0       0
-   649 ;;      Totals:         1       2       0       0       0
-   650 ;;Total ram usage:        3 bytes
-   651 ;; Hardware stack levels used: 1
-   652 ;; Hardware stack levels required when called: 1
-   653 ;; This function calls:
-   654 ;;		Nothing
-   655 ;; This function is called by:
-   656 ;;		_setup
-   657 ;; This function uses a non-reentrant model
-   658 ;;
-   659                           
-   660                           
-   661                           ;psect for function _osc_config
-   662  0077                     _osc_config:
-   663                           
-   664                           ;incstack = 0
-   665                           ; Regs used in _osc_config: [wreg-fsr0h+status,2+status,0]
-   666                           ;osc_config@freq stored from wreg
-   667  0077  00F5               	movwf	osc_config@freq
-   668  0078                     l930:
-   669                           
-   670                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 16: void 
+   608  016B  1496               	bsf	22,1	;volatile
+   609  016C                     l733:
+   610                           
+   611                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 127:    
+      +                           IOCBbits.IOCB2=1;
+   612  016C  1516               	bsf	22,2	;volatile
+   613  016D                     l67:
+   614  016D  0008               	return
+   615  016E                     __end_of_setup:
+   616                           
+   617                           	psect	text2
+   618  00BC                     __ptext2:	
+   619 ;; *************** function _osc_config *****************
+   620 ;; Defined at:
+   621 ;;		line 16 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c"
+   622 ;; Parameters:    Size  Location     Type
+   623 ;;  freq            1    wreg     unsigned char 
+   624 ;; Auto vars:     Size  Location     Type
+   625 ;;  freq            1    7[COMMON] unsigned char 
+   626 ;; Return value:  Size  Location     Type
+   627 ;;                  1    wreg      void 
+   628 ;; Registers used:
+   629 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   630 ;; Tracked objects:
+   631 ;;		On entry : 0/0
+   632 ;;		On exit  : 0/0
+   633 ;;		Unchanged: 0/0
+   634 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   635 ;;      Params:         0       0       0       0       0
+   636 ;;      Locals:         1       0       0       0       0
+   637 ;;      Temps:          2       0       0       0       0
+   638 ;;      Totals:         3       0       0       0       0
+   639 ;;Total ram usage:        3 bytes
+   640 ;; Hardware stack levels used: 1
+   641 ;; Hardware stack levels required when called: 1
+   642 ;; This function calls:
+   643 ;;		Nothing
+   644 ;; This function is called by:
+   645 ;;		_setup
+   646 ;; This function uses a non-reentrant model
+   647 ;;
+   648                           
+   649                           
+   650                           ;psect for function _osc_config
+   651  00BC                     _osc_config:
+   652                           
+   653                           ;incstack = 0
+   654                           ; Regs used in _osc_config: [wreg-fsr0h+status,2+status,0]
+   655                           ;osc_config@freq stored from wreg
+   656  00BC  00F7               	movwf	osc_config@freq
+   657  00BD                     l683:
+   658                           
+   659                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 16: void 
       +                          osc_config(uint8_t freq);C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X
       +                          /Osc_config.c: 17: {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc
       +                          _config.c: 18:     switch(freq)
-   671  0078  2897               	goto	l950
-   672  0079                     l932:
-   673                           
-   674                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 21:      
+   660  00BD  28DC               	goto	l703
+   661  00BE                     l685:
+   662                           
+   663                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 21:      
       +                                 OSCCONbits.IRCF=0b100;
-   675  0079  1683               	bsf	3,5	;RP0=1, select bank1
-   676  007A  1303               	bcf	3,6	;RP1=0, select bank1
-   677  007B  080F               	movf	15,w	;volatile
-   678  007C  398F               	andlw	-113
-   679  007D  3840               	iorlw	64
-   680  007E  008F               	movwf	15	;volatile
-   681  007F                     l934:
-   682                           
-   683                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 22:      
+   664  00BE  1683               	bsf	3,5	;RP0=1, select bank1
+   665  00BF  1303               	bcf	3,6	;RP1=0, select bank1
+   666  00C0  080F               	movf	15,w	;volatile
+   667  00C1  398F               	andlw	-113
+   668  00C2  3840               	iorlw	64
+   669  00C3  008F               	movwf	15	;volatile
+   670  00C4                     l687:
+   671                           
+   672                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 22:      
       +                                 OSCCONbits.SCS=1;
-   684  007F  140F               	bsf	15,0	;volatile
-   685                           
-   686                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 23:      
+   673  00C4  140F               	bsf	15,0	;volatile
+   674                           
+   675                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 23:      
       +                                 break;
-   687  0080  28AF               	goto	l88
-   688  0081                     l936:
-   689                           
-   690                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 26:      
+   676  00C5  28F2               	goto	l91
+   677  00C6                     l689:
+   678                           
+   679                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 26:      
       +                                 OSCCONbits.IRCF=0b101;
-   691  0081  1683               	bsf	3,5	;RP0=1, select bank1
-   692  0082  1303               	bcf	3,6	;RP1=0, select bank1
-   693  0083  080F               	movf	15,w	;volatile
-   694  0084  398F               	andlw	-113
-   695  0085  3850               	iorlw	80
-   696  0086  008F               	movwf	15	;volatile
-   697  0087                     l938:
-   698                           
-   699                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 27:      
+   680  00C6  1683               	bsf	3,5	;RP0=1, select bank1
+   681  00C7  1303               	bcf	3,6	;RP1=0, select bank1
+   682  00C8  080F               	movf	15,w	;volatile
+   683  00C9  398F               	andlw	-113
+   684  00CA  3850               	iorlw	80
+   685  00CB  008F               	movwf	15	;volatile
+   686  00CC                     l691:
+   687                           
+   688                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 27:      
       +                                 OSCCONbits.SCS=1;
-   700  0087  140F               	bsf	15,0	;volatile
-   701                           
-   702                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 28:      
+   689  00CC  140F               	bsf	15,0	;volatile
+   690                           
+   691                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 28:      
       +                                 break;
-   703  0088  28AF               	goto	l88
-   704  0089                     l940:
-   705                           
-   706                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 31:      
+   692  00CD  28F2               	goto	l91
+   693  00CE                     l693:
+   694                           
+   695                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 31:      
       +                                 OSCCONbits.IRCF=0b110;
-   707  0089  1683               	bsf	3,5	;RP0=1, select bank1
-   708  008A  1303               	bcf	3,6	;RP1=0, select bank1
-   709  008B  080F               	movf	15,w	;volatile
-   710  008C  398F               	andlw	-113
-   711  008D  3860               	iorlw	96
-   712  008E  008F               	movwf	15	;volatile
-   713  008F                     l942:
-   714                           
-   715                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 32:      
+   696  00CE  1683               	bsf	3,5	;RP0=1, select bank1
+   697  00CF  1303               	bcf	3,6	;RP1=0, select bank1
+   698  00D0  080F               	movf	15,w	;volatile
+   699  00D1  398F               	andlw	-113
+   700  00D2  3860               	iorlw	96
+   701  00D3  008F               	movwf	15	;volatile
+   702  00D4                     l695:
+   703                           
+   704                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 32:      
       +                                 OSCCONbits.SCS=1;
-   716  008F  140F               	bsf	15,0	;volatile
-   717                           
-   718                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 33:      
+   705  00D4  140F               	bsf	15,0	;volatile
+   706                           
+   707                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 33:      
       +                                 break;
-   719  0090  28AF               	goto	l88
-   720  0091                     l944:
-   721                           
-   722                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 36:      
+   708  00D5  28F2               	goto	l91
+   709  00D6                     l697:
+   710                           
+   711                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 36:      
       +                                 OSCCONbits.IRCF=0b111;
-   723  0091  3070               	movlw	112
-   724  0092  1683               	bsf	3,5	;RP0=1, select bank1
-   725  0093  1303               	bcf	3,6	;RP1=0, select bank1
-   726  0094  048F               	iorwf	15,f	;volatile
-   727  0095                     l946:
-   728                           
-   729                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 37:      
+   712  00D6  3070               	movlw	112
+   713  00D7  1683               	bsf	3,5	;RP0=1, select bank1
+   714  00D8  1303               	bcf	3,6	;RP1=0, select bank1
+   715  00D9  048F               	iorwf	15,f	;volatile
+   716  00DA                     l699:
+   717                           
+   718                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 37:      
       +                                 OSCCONbits.SCS=1;
-   730  0095  140F               	bsf	15,0	;volatile
-   731                           
-   732                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 38:      
+   719  00DA  140F               	bsf	15,0	;volatile
+   720                           
+   721                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/Osc_config.c: 38:      
       +                                 break;
-   733  0096  28AF               	goto	l88
-   734  0097                     l950:
-   735  0097  0875               	movf	osc_config@freq,w
-   736  0098  1283               	bcf	3,5	;RP0=0, select bank0
-   737  0099  1303               	bcf	3,6	;RP1=0, select bank0
-   738  009A  00A0               	movwf	??_osc_config
-   739  009B  01A1               	clrf	??_osc_config+1
-   740                           
-   741                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+   722  00DB  28F2               	goto	l91
+   723  00DC                     l703:
+   724  00DC  0877               	movf	osc_config@freq,w
+   725  00DD  00F5               	movwf	??_osc_config
+   726  00DE  01F6               	clrf	??_osc_config+1
+   727                           
+   728                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-   742                           ; Switch size 1, requested type "simple"
-   743                           ; Number of cases is 1, Range of values is 0 to 0
-   744                           ; switch strategies available:
-   745                           ; Name         Instructions Cycles
-   746                           ; simple_byte            4     3 (average)
-   747                           ; direct_byte           11     8 (fixed)
-   748                           ; jumptable            260     6 (fixed)
-   749                           ;	Chosen strategy is simple_byte
-   750  009C  0821               	movf	??_osc_config+1,w
-   751  009D  3A00               	xorlw	0	; case 0
-   752  009E  1903               	skipnz
-   753  009F  28A1               	goto	l1090
-   754  00A0  28AF               	goto	l88
-   755  00A1                     l1090:
-   756                           
-   757                           ; Switch size 1, requested type "simple"
-   758                           ; Number of cases is 4, Range of values is 1 to 8
-   759                           ; switch strategies available:
-   760                           ; Name         Instructions Cycles
-   761                           ; simple_byte           13     7 (average)
-   762                           ; direct_byte           35    11 (fixed)
-   763                           ; jumptable            263     9 (fixed)
-   764                           ;	Chosen strategy is simple_byte
-   765  00A1  0820               	movf	??_osc_config,w
-   766  00A2  3A01               	xorlw	1	; case 1
-   767  00A3  1903               	skipnz
-   768  00A4  2879               	goto	l932
-   769  00A5  3A03               	xorlw	3	; case 2
-   770  00A6  1903               	skipnz
-   771  00A7  2881               	goto	l936
-   772  00A8  3A06               	xorlw	6	; case 4
-   773  00A9  1903               	skipnz
-   774  00AA  2889               	goto	l940
-   775  00AB  3A0C               	xorlw	12	; case 8
-   776  00AC  1903               	skipnz
-   777  00AD  2891               	goto	l944
-   778  00AE  28AF               	goto	l88
-   779  00AF                     l88:
-   780  00AF  0008               	return
-   781  00B0                     __end_of_osc_config:
-   782                           
-   783                           	psect	text3
-   784  0018                     __ptext3:	
-   785 ;; *************** function _motor_encendido *****************
-   786 ;; Defined at:
-   787 ;;		line 143 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
-   788 ;; Parameters:    Size  Location     Type
-   789 ;;		None
-   790 ;; Auto vars:     Size  Location     Type
-   791 ;;  i               2    2[BANK0 ] int 
-   792 ;; Return value:  Size  Location     Type
-   793 ;;                  1    wreg      void 
-   794 ;; Registers used:
-   795 ;;		wreg, status,2, btemp+1
-   796 ;; Tracked objects:
-   797 ;;		On entry : 0/0
-   798 ;;		On exit  : 0/0
-   799 ;;		Unchanged: 0/0
-   800 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   801 ;;      Params:         0       0       0       0       0
-   802 ;;      Locals:         0       2       0       0       0
-   803 ;;      Temps:          0       2       0       0       0
-   804 ;;      Totals:         0       4       0       0       0
-   805 ;;Total ram usage:        4 bytes
-   806 ;; Hardware stack levels used: 1
-   807 ;; Hardware stack levels required when called: 1
-   808 ;; This function calls:
-   809 ;;		Nothing
-   810 ;; This function is called by:
-   811 ;;		_main
-   812 ;; This function uses a non-reentrant model
-   813 ;;
-   814                           
-   815                           
-   816                           ;psect for function _motor_encendido
-   817  0018                     _motor_encendido:
-   818  0018                     l982:	
-   819                           ;incstack = 0
-   820                           ; Regs used in _motor_encendido: [wreg+status,2+btemp+1]
-   821                           
-   822                           
-   823                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 145:    
-      +                           for(int i; i<1000;i++)
-   824  0018  1283               	bcf	3,5	;RP0=0, select bank0
-   825  0019  1303               	bcf	3,6	;RP1=0, select bank0
-   826  001A  0823               	movf	motor_encendido@i+1,w
-   827  001B  3A80               	xorlw	128
-   828  001C  00FF               	movwf	btemp+1
-   829  001D  3083               	movlw	131
-   830  001E  027F               	subwf	btemp+1,w
-   831  001F  1D03               	skipz
-   832  0020  2823               	goto	u115
-   833  0021  30E8               	movlw	232
-   834  0022  0222               	subwf	motor_encendido@i,w
-   835  0023                     u115:
-   836  0023  1C03               	skipc
-   837  0024  2826               	goto	u111
-   838  0025  2827               	goto	u110
-   839  0026                     u111:
-   840  0026  2828               	goto	l72
-   841  0027                     u110:
-   842  0027  2875               	goto	l1014
-   843  0028                     l72:
+   729                           ; Switch size 1, requested type "simple"
+   730                           ; Number of cases is 1, Range of values is 0 to 0
+   731                           ; switch strategies available:
+   732                           ; Name         Instructions Cycles
+   733                           ; simple_byte            4     3 (average)
+   734                           ; direct_byte           11     8 (fixed)
+   735                           ; jumptable            260     6 (fixed)
+   736                           ;	Chosen strategy is simple_byte
+   737  00DF  0876               	movf	??_osc_config+1,w
+   738  00E0  3A00               	xorlw	0	; case 0
+   739  00E1  1903               	skipnz
+   740  00E2  28E4               	goto	l887
+   741  00E3  28F2               	goto	l91
+   742  00E4                     l887:
+   743                           
+   744                           ; Switch size 1, requested type "simple"
+   745                           ; Number of cases is 4, Range of values is 1 to 8
+   746                           ; switch strategies available:
+   747                           ; Name         Instructions Cycles
+   748                           ; simple_byte           13     7 (average)
+   749                           ; direct_byte           35    11 (fixed)
+   750                           ; jumptable            263     9 (fixed)
+   751                           ;	Chosen strategy is simple_byte
+   752  00E4  0875               	movf	??_osc_config,w
+   753  00E5  3A01               	xorlw	1	; case 1
+   754  00E6  1903               	skipnz
+   755  00E7  28BE               	goto	l685
+   756  00E8  3A03               	xorlw	3	; case 2
+   757  00E9  1903               	skipnz
+   758  00EA  28C6               	goto	l689
+   759  00EB  3A06               	xorlw	6	; case 4
+   760  00EC  1903               	skipnz
+   761  00ED  28CE               	goto	l693
+   762  00EE  3A0C               	xorlw	12	; case 8
+   763  00EF  1903               	skipnz
+   764  00F0  28D6               	goto	l697
+   765  00F1  28F2               	goto	l91
+   766  00F2                     l91:
+   767  00F2  0008               	return
+   768  00F3                     __end_of_osc_config:
+   769                           
+   770                           	psect	text3
+   771  0018                     __ptext3:	
+   772 ;; *************** function _motor_retorno *****************
+   773 ;; Defined at:
+   774 ;;		line 170 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
+   775 ;; Parameters:    Size  Location     Type
+   776 ;;		None
+   777 ;; Auto vars:     Size  Location     Type
+   778 ;;  j               2    7[COMMON] int 
+   779 ;; Return value:  Size  Location     Type
+   780 ;;                  1    wreg      void 
+   781 ;; Registers used:
+   782 ;;		wreg, btemp+1
+   783 ;; Tracked objects:
+   784 ;;		On entry : 0/0
+   785 ;;		On exit  : 0/0
+   786 ;;		Unchanged: 0/0
+   787 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   788 ;;      Params:         0       0       0       0       0
+   789 ;;      Locals:         2       0       0       0       0
+   790 ;;      Temps:          2       0       0       0       0
+   791 ;;      Totals:         4       0       0       0       0
+   792 ;;Total ram usage:        4 bytes
+   793 ;; Hardware stack levels used: 1
+   794 ;; Hardware stack levels required when called: 1
+   795 ;; This function calls:
+   796 ;;		Nothing
+   797 ;; This function is called by:
+   798 ;;		_main
+   799 ;; This function uses a non-reentrant model
+   800 ;;
+   801                           
+   802                           
+   803                           ;psect for function _motor_retorno
+   804  0018                     _motor_retorno:
+   805  0018                     l767:	
+   806                           ;incstack = 0
+   807                           ; Regs used in _motor_retorno: [wreg+btemp+1]
+   808                           
+   809                           
+   810                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 172:    
+      +                           for(int j;j<1000;j++)
+   811  0018  0878               	movf	motor_retorno@j+1,w
+   812  0019  3A80               	xorlw	128
+   813  001A  00FF               	movwf	btemp+1
+   814  001B  3083               	movlw	131
+   815  001C  027F               	subwf	btemp+1,w
+   816  001D  1D03               	skipz
+   817  001E  2821               	goto	u25
+   818  001F  30E8               	movlw	232
+   819  0020  0277               	subwf	motor_retorno@j,w
+   820  0021                     u25:
+   821  0021  1C03               	skipc
+   822  0022  2824               	goto	u21
+   823  0023  2825               	goto	u20
+   824  0024                     u21:
+   825  0024  2826               	goto	l78
+   826  0025                     u20:
+   827  0025  2869               	goto	l80
+   828  0026                     l78:
+   829                           
+   830                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 173:    
+      +                           {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 175:  
+      +                                 PORTDbits.RD7=0;
+   831  0026  1283               	bcf	3,5	;RP0=0, select bank0
+   832  0027  1303               	bcf	3,6	;RP1=0, select bank0
+   833  0028  1388               	bcf	8,7	;volatile
+   834                           
+   835                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 176:    
+      +                               PORTDbits.RD6=0;
+   836  0029  1308               	bcf	8,6	;volatile
+   837                           
+   838                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 177:    
+      +                               PORTDbits.RD5=1;
+   839  002A  1688               	bsf	8,5	;volatile
+   840                           
+   841                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 178:    
+      +                               PORTDbits.RD4=1;
+   842  002B  1608               	bsf	8,4	;volatile
+   843  002C                     l771:
    844                           
-   845                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 146:    
-      +                           {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 148:  
-      +                                 PORTDbits.RD7=1;
-   846  0028  1283               	bcf	3,5	;RP0=0, select bank0
-   847  0029  1303               	bcf	3,6	;RP1=0, select bank0
-   848  002A  1788               	bsf	8,7	;volatile
-   849                           
-   850                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 149:    
-      +                               PORTDbits.RD6=0;
-   851  002B  1308               	bcf	8,6	;volatile
-   852                           
-   853                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 150:    
-      +                               PORTDbits.RD5=0;
-   854  002C  1288               	bcf	8,5	;volatile
-   855                           
-   856                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 151:    
-      +                               PORTDbits.RD4=1;
-   857  002D  1608               	bsf	8,4	;volatile
-   858  002E                     l986:
-   859                           
-   860                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 152:    
+   845                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 179:    
       +                               _delay((unsigned long)((2)*(8000000/4000.0)));
-   861  002E  3006               	movlw	6
-   862  002F  1283               	bcf	3,5	;RP0=0, select bank0
-   863  0030  1303               	bcf	3,6	;RP1=0, select bank0
-   864  0031  00A1               	movwf	??_motor_encendido+1
-   865  0032  302F               	movlw	47
-   866  0033  00A0               	movwf	??_motor_encendido
-   867  0034                     u167:
-   868  0034  0BA0               	decfsz	??_motor_encendido,f
-   869  0035  2834               	goto	u167
-   870  0036  0BA1               	decfsz	??_motor_encendido+1,f
-   871  0037  2834               	goto	u167
-   872  0038  2839               	nop2
-   873  0039                     l988:
+   846  002C  3006               	movlw	6
+   847  002D  00F6               	movwf	??_motor_retorno+1
+   848  002E  3030               	movlw	48
+   849  002F  00F5               	movwf	??_motor_retorno
+   850  0030                     u107:
+   851  0030  0BF5               	decfsz	??_motor_retorno,f
+   852  0031  2830               	goto	u107
+   853  0032  0BF6               	decfsz	??_motor_retorno+1,f
+   854  0033  2830               	goto	u107
+   855  0034  0000               	nop
+   856  0035                     l773:
+   857                           
+   858                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 181:    
+      +                               PORTDbits.RD7=0;
+   859  0035  1283               	bcf	3,5	;RP0=0, select bank0
+   860  0036  1303               	bcf	3,6	;RP1=0, select bank0
+   861  0037  1388               	bcf	8,7	;volatile
+   862  0038                     l775:
+   863                           
+   864                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 182:    
+      +                               PORTDbits.RD6=1;
+   865  0038  1708               	bsf	8,6	;volatile
+   866  0039                     l777:
+   867                           
+   868                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 183:    
+      +                               PORTDbits.RD5=1;
+   869  0039  1688               	bsf	8,5	;volatile
+   870  003A                     l779:
+   871                           
+   872                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 184:    
+      +                               PORTDbits.RD4=0;
+   873  003A  1208               	bcf	8,4	;volatile
    874                           
-   875                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 154:    
+   875                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 185:    
+      +                               _delay((unsigned long)((2)*(8000000/4000.0)));
+   876  003B  3006               	movlw	6
+   877  003C  00F6               	movwf	??_motor_retorno+1
+   878  003D  3030               	movlw	48
+   879  003E  00F5               	movwf	??_motor_retorno
+   880  003F                     u117:
+   881  003F  0BF5               	decfsz	??_motor_retorno,f
+   882  0040  283F               	goto	u117
+   883  0041  0BF6               	decfsz	??_motor_retorno+1,f
+   884  0042  283F               	goto	u117
+   885  0043  0000               	nop
+   886  0044                     l781:
+   887                           
+   888                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 187:    
       +                               PORTDbits.RD7=1;
-   876  0039  1283               	bcf	3,5	;RP0=0, select bank0
-   877  003A  1303               	bcf	3,6	;RP1=0, select bank0
-   878  003B  1788               	bsf	8,7	;volatile
-   879  003C                     l990:
-   880                           
-   881                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 155:    
+   889  0044  1283               	bcf	3,5	;RP0=0, select bank0
+   890  0045  1303               	bcf	3,6	;RP1=0, select bank0
+   891  0046  1788               	bsf	8,7	;volatile
+   892  0047                     l783:
+   893                           
+   894                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 188:    
       +                               PORTDbits.RD6=1;
-   882  003C  1708               	bsf	8,6	;volatile
-   883  003D                     l992:
-   884                           
-   885                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 156:    
+   895  0047  1708               	bsf	8,6	;volatile
+   896  0048                     l785:
+   897                           
+   898                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 189:    
       +                               PORTDbits.RD5=0;
-   886  003D  1288               	bcf	8,5	;volatile
-   887  003E                     l994:
-   888                           
-   889                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 157:    
+   899  0048  1288               	bcf	8,5	;volatile
+   900  0049                     l787:
+   901                           
+   902                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 190:    
       +                               PORTDbits.RD4=0;
-   890  003E  1208               	bcf	8,4	;volatile
-   891                           
-   892                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 158:    
+   903  0049  1208               	bcf	8,4	;volatile
+   904                           
+   905                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 191:    
       +                               _delay((unsigned long)((2)*(8000000/4000.0)));
-   893  003F  3006               	movlw	6
-   894  0040  1283               	bcf	3,5	;RP0=0, select bank0
-   895  0041  1303               	bcf	3,6	;RP1=0, select bank0
-   896  0042  00A1               	movwf	??_motor_encendido+1
-   897  0043  302F               	movlw	47
-   898  0044  00A0               	movwf	??_motor_encendido
-   899  0045                     u177:
-   900  0045  0BA0               	decfsz	??_motor_encendido,f
-   901  0046  2845               	goto	u177
-   902  0047  0BA1               	decfsz	??_motor_encendido+1,f
-   903  0048  2845               	goto	u177
-   904  0049  284A               	nop2
-   905  004A                     l996:
-   906                           
-   907                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 160:    
-      +                               PORTDbits.RD7=0;
-   908  004A  1283               	bcf	3,5	;RP0=0, select bank0
-   909  004B  1303               	bcf	3,6	;RP1=0, select bank0
-   910  004C  1388               	bcf	8,7	;volatile
-   911  004D                     l998:
-   912                           
-   913                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 161:    
-      +                               PORTDbits.RD6=1;
-   914  004D  1708               	bsf	8,6	;volatile
-   915  004E                     l1000:
-   916                           
-   917                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 162:    
-      +                               PORTDbits.RD5=1;
-   918  004E  1688               	bsf	8,5	;volatile
-   919  004F                     l1002:
-   920                           
-   921                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 163:    
-      +                               PORTDbits.RD4=0;
-   922  004F  1208               	bcf	8,4	;volatile
+   906  004A  3006               	movlw	6
+   907  004B  00F6               	movwf	??_motor_retorno+1
+   908  004C  3030               	movlw	48
+   909  004D  00F5               	movwf	??_motor_retorno
+   910  004E                     u127:
+   911  004E  0BF5               	decfsz	??_motor_retorno,f
+   912  004F  284E               	goto	u127
+   913  0050  0BF6               	decfsz	??_motor_retorno+1,f
+   914  0051  284E               	goto	u127
+   915  0052  0000               	nop
+   916  0053                     l789:
+   917                           
+   918                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 193:    
+      +                               PORTDbits.RD7=1;
+   919  0053  1283               	bcf	3,5	;RP0=0, select bank0
+   920  0054  1303               	bcf	3,6	;RP1=0, select bank0
+   921  0055  1788               	bsf	8,7	;volatile
+   922  0056                     l791:
    923                           
-   924                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 164:    
-      +                               _delay((unsigned long)((2)*(8000000/4000.0)));
-   925  0050  3006               	movlw	6
-   926  0051  1283               	bcf	3,5	;RP0=0, select bank0
-   927  0052  1303               	bcf	3,6	;RP1=0, select bank0
-   928  0053  00A1               	movwf	??_motor_encendido+1
-   929  0054  302F               	movlw	47
-   930  0055  00A0               	movwf	??_motor_encendido
-   931  0056                     u187:
-   932  0056  0BA0               	decfsz	??_motor_encendido,f
-   933  0057  2856               	goto	u187
-   934  0058  0BA1               	decfsz	??_motor_encendido+1,f
-   935  0059  2856               	goto	u187
-   936  005A  285B               	nop2
-   937  005B                     l1004:
-   938                           
-   939                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 166:    
-      +                               PORTDbits.RD7=0;
-   940  005B  1283               	bcf	3,5	;RP0=0, select bank0
-   941  005C  1303               	bcf	3,6	;RP1=0, select bank0
-   942  005D  1388               	bcf	8,7	;volatile
-   943  005E                     l1006:
-   944                           
-   945                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 167:    
+   924                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 194:    
       +                               PORTDbits.RD6=0;
-   946  005E  1308               	bcf	8,6	;volatile
-   947  005F                     l1008:
-   948                           
-   949                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 168:    
-      +                               PORTDbits.RD5=1;
-   950  005F  1688               	bsf	8,5	;volatile
-   951  0060                     l1010:
-   952                           
-   953                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 169:    
+   925  0056  1308               	bcf	8,6	;volatile
+   926  0057                     l793:
+   927                           
+   928                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 195:    
+      +                               PORTDbits.RD5=0;
+   929  0057  1288               	bcf	8,5	;volatile
+   930  0058                     l795:
+   931                           
+   932                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 196:    
       +                               PORTDbits.RD4=1;
-   954  0060  1608               	bsf	8,4	;volatile
-   955                           
-   956                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 170:    
+   933  0058  1608               	bsf	8,4	;volatile
+   934                           
+   935                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 197:    
       +                               _delay((unsigned long)((2)*(8000000/4000.0)));
-   957  0061  3006               	movlw	6
-   958  0062  1283               	bcf	3,5	;RP0=0, select bank0
-   959  0063  1303               	bcf	3,6	;RP1=0, select bank0
-   960  0064  00A1               	movwf	??_motor_encendido+1
-   961  0065  302F               	movlw	47
-   962  0066  00A0               	movwf	??_motor_encendido
-   963  0067                     u197:
-   964  0067  0BA0               	decfsz	??_motor_encendido,f
-   965  0068  2867               	goto	u197
-   966  0069  0BA1               	decfsz	??_motor_encendido+1,f
-   967  006A  2867               	goto	u197
-   968  006B  286C               	nop2
-   969                           
-   970                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 171:    
+   936  0059  3006               	movlw	6
+   937  005A  00F6               	movwf	??_motor_retorno+1
+   938  005B  3030               	movlw	48
+   939  005C  00F5               	movwf	??_motor_retorno
+   940  005D                     u137:
+   941  005D  0BF5               	decfsz	??_motor_retorno,f
+   942  005E  285D               	goto	u137
+   943  005F  0BF6               	decfsz	??_motor_retorno+1,f
+   944  0060  285D               	goto	u137
+   945  0061  0000               	nop
+   946                           
+   947                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 198:    
       +                           }
-   971  006C  3001               	movlw	1
-   972  006D  1283               	bcf	3,5	;RP0=0, select bank0
-   973  006E  1303               	bcf	3,6	;RP1=0, select bank0
-   974  006F  07A2               	addwf	motor_encendido@i,f
-   975  0070  1803               	skipnc
-   976  0071  0AA3               	incf	motor_encendido@i+1,f
-   977  0072  3000               	movlw	0
-   978  0073  07A3               	addwf	motor_encendido@i+1,f
-   979  0074  2818               	goto	l982
-   980  0075                     l1014:
-   981                           
-   982                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 172:    
-      +                           encendido=0;
-   983  0075  01F6               	clrf	_encendido
-   984  0076                     l74:
-   985  0076  0008               	return
-   986  0077                     __end_of_motor_encendido:
-   987                           
-   988                           	psect	text4
-   989  0126                     __ptext4:	
-   990 ;; *************** function _motor_apagado *****************
-   991 ;; Defined at:
-   992 ;;		line 175 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
-   993 ;; Parameters:    Size  Location     Type
-   994 ;;		None
-   995 ;; Auto vars:     Size  Location     Type
-   996 ;;		None
-   997 ;; Return value:  Size  Location     Type
-   998 ;;                  1    wreg      void 
-   999 ;; Registers used:
-  1000 ;;		status,2
-  1001 ;; Tracked objects:
-  1002 ;;		On entry : 0/0
-  1003 ;;		On exit  : 0/0
-  1004 ;;		Unchanged: 0/0
-  1005 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1006 ;;      Params:         0       0       0       0       0
-  1007 ;;      Locals:         0       0       0       0       0
-  1008 ;;      Temps:          0       0       0       0       0
-  1009 ;;      Totals:         0       0       0       0       0
-  1010 ;;Total ram usage:        0 bytes
-  1011 ;; Hardware stack levels used: 1
-  1012 ;; Hardware stack levels required when called: 1
-  1013 ;; This function calls:
-  1014 ;;		Nothing
-  1015 ;; This function is called by:
-  1016 ;;		_main
-  1017 ;; This function uses a non-reentrant model
-  1018 ;;
-  1019                           
-  1020                           
-  1021                           ;psect for function _motor_apagado
-  1022  0126                     _motor_apagado:
-  1023  0126                     l766:	
-  1024                           ;incstack = 0
-  1025                           ; Regs used in _motor_apagado: [status,2]
+   948  0062  3001               	movlw	1
+   949  0063  07F7               	addwf	motor_retorno@j,f
+   950  0064  1803               	skipnc
+   951  0065  0AF8               	incf	motor_retorno@j+1,f
+   952  0066  3000               	movlw	0
+   953  0067  07F8               	addwf	motor_retorno@j+1,f
+   954  0068  2818               	goto	l767
+   955  0069                     l80:
+   956  0069  0008               	return
+   957  006A                     __end_of_motor_retorno:
+   958                           
+   959                           	psect	text4
+   960  006A                     __ptext4:	
+   961 ;; *************** function _motor_encendido *****************
+   962 ;; Defined at:
+   963 ;;		line 134 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
+   964 ;; Parameters:    Size  Location     Type
+   965 ;;		None
+   966 ;; Auto vars:     Size  Location     Type
+   967 ;;  i               2    7[COMMON] int 
+   968 ;; Return value:  Size  Location     Type
+   969 ;;                  1    wreg      void 
+   970 ;; Registers used:
+   971 ;;		wreg, btemp+1
+   972 ;; Tracked objects:
+   973 ;;		On entry : 0/0
+   974 ;;		On exit  : 0/0
+   975 ;;		Unchanged: 0/0
+   976 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   977 ;;      Params:         0       0       0       0       0
+   978 ;;      Locals:         2       0       0       0       0
+   979 ;;      Temps:          2       0       0       0       0
+   980 ;;      Totals:         4       0       0       0       0
+   981 ;;Total ram usage:        4 bytes
+   982 ;; Hardware stack levels used: 1
+   983 ;; Hardware stack levels required when called: 1
+   984 ;; This function calls:
+   985 ;;		Nothing
+   986 ;; This function is called by:
+   987 ;;		_main
+   988 ;; This function uses a non-reentrant model
+   989 ;;
+   990                           
+   991                           
+   992                           ;psect for function _motor_encendido
+   993  006A                     _motor_encendido:
+   994  006A                     l735:	
+   995                           ;incstack = 0
+   996                           ; Regs used in _motor_encendido: [wreg+btemp+1]
+   997                           
+   998                           
+   999                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 136:    
+      +                           for(int i; i<1000;i++)
+  1000  006A  0878               	movf	motor_encendido@i+1,w
+  1001  006B  3A80               	xorlw	128
+  1002  006C  00FF               	movwf	btemp+1
+  1003  006D  3083               	movlw	131
+  1004  006E  027F               	subwf	btemp+1,w
+  1005  006F  1D03               	skipz
+  1006  0070  2873               	goto	u15
+  1007  0071  30E8               	movlw	232
+  1008  0072  0277               	subwf	motor_encendido@i,w
+  1009  0073                     u15:
+  1010  0073  1C03               	skipc
+  1011  0074  2876               	goto	u11
+  1012  0075  2877               	goto	u10
+  1013  0076                     u11:
+  1014  0076  2878               	goto	l70
+  1015  0077                     u10:
+  1016  0077  28BB               	goto	l72
+  1017  0078                     l70:
+  1018                           
+  1019                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 137:    
+      +                           {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 139:  
+      +                                 PORTDbits.RD7=1;
+  1020  0078  1283               	bcf	3,5	;RP0=0, select bank0
+  1021  0079  1303               	bcf	3,6	;RP1=0, select bank0
+  1022  007A  1788               	bsf	8,7	;volatile
+  1023                           
+  1024                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 140:    
+      +                               PORTDbits.RD6=0;
+  1025  007B  1308               	bcf	8,6	;volatile
   1026                           
-  1027                           
-  1028                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 177:    
-      +                           PORTD=0x00;
-  1029  0126  1283               	bcf	3,5	;RP0=0, select bank0
-  1030  0127  1303               	bcf	3,6	;RP1=0, select bank0
-  1031  0128  0188               	clrf	8	;volatile
-  1032  0129                     l77:
-  1033  0129  0008               	return
-  1034  012A                     __end_of_motor_apagado:
-  1035                           
-  1036                           	psect	text5
-  1037  0105                     __ptext5:	
-  1038 ;; *************** function _isr *****************
-  1039 ;; Defined at:
-  1040 ;;		line 54 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
-  1041 ;; Parameters:    Size  Location     Type
-  1042 ;;		None
-  1043 ;; Auto vars:     Size  Location     Type
-  1044 ;;		None
-  1045 ;; Return value:  Size  Location     Type
-  1046 ;;                  1    wreg      void 
-  1047 ;; Registers used:
-  1048 ;;		wreg, fsr0l, fsr0h, status,2, status,0
-  1049 ;; Tracked objects:
-  1050 ;;		On entry : 0/0
-  1051 ;;		On exit  : 0/0
-  1052 ;;		Unchanged: 0/0
-  1053 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-  1054 ;;      Params:         0       0       0       0       0
-  1055 ;;      Locals:         0       0       0       0       0
-  1056 ;;      Temps:          5       0       0       0       0
-  1057 ;;      Totals:         5       0       0       0       0
-  1058 ;;Total ram usage:        5 bytes
-  1059 ;; Hardware stack levels used: 1
-  1060 ;; This function calls:
-  1061 ;;		Nothing
-  1062 ;; This function is called by:
-  1063 ;;		Interrupt level 1
-  1064 ;; This function uses a non-reentrant model
-  1065 ;;
-  1066                           
-  1067                           
-  1068                           ;psect for function _isr
-  1069  0105                     _isr:
-  1070  0105                     i1l768:
-  1071                           
-  1072                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 56:     
-      +                          if (INTCONbits.RBIF)
-  1073  0105  1C0B               	btfss	11,0	;volatile
-  1074  0106  2908               	goto	u2_21
-  1075  0107  2909               	goto	u2_20
-  1076  0108                     u2_21:
-  1077  0108  291D               	goto	i1l53
-  1078  0109                     u2_20:
-  1079  0109  290D               	goto	i1l774
-  1080  010A                     i1l51:	
-  1081                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 59:     
-      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 64:
-      +                                       case(0b11111101):
+  1027                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 141:    
+      +                               PORTDbits.RD5=0;
+  1028  007C  1288               	bcf	8,5	;volatile
+  1029                           
+  1030                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 142:    
+      +                               PORTDbits.RD4=1;
+  1031  007D  1608               	bsf	8,4	;volatile
+  1032  007E                     l739:
+  1033                           
+  1034                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 143:    
+      +                               _delay((unsigned long)((2)*(8000000/4000.0)));
+  1035  007E  3006               	movlw	6
+  1036  007F  00F6               	movwf	??_motor_encendido+1
+  1037  0080  3030               	movlw	48
+  1038  0081  00F5               	movwf	??_motor_encendido
+  1039  0082                     u147:
+  1040  0082  0BF5               	decfsz	??_motor_encendido,f
+  1041  0083  2882               	goto	u147
+  1042  0084  0BF6               	decfsz	??_motor_encendido+1,f
+  1043  0085  2882               	goto	u147
+  1044  0086  0000               	nop
+  1045  0087                     l741:
+  1046                           
+  1047                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 145:    
+      +                               PORTDbits.RD7=1;
+  1048  0087  1283               	bcf	3,5	;RP0=0, select bank0
+  1049  0088  1303               	bcf	3,6	;RP1=0, select bank0
+  1050  0089  1788               	bsf	8,7	;volatile
+  1051  008A                     l743:
+  1052                           
+  1053                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 146:    
+      +                               PORTDbits.RD6=1;
+  1054  008A  1708               	bsf	8,6	;volatile
+  1055  008B                     l745:
+  1056                           
+  1057                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 147:    
+      +                               PORTDbits.RD5=0;
+  1058  008B  1288               	bcf	8,5	;volatile
+  1059  008C                     l747:
+  1060                           
+  1061                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 148:    
+      +                               PORTDbits.RD4=0;
+  1062  008C  1208               	bcf	8,4	;volatile
+  1063                           
+  1064                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 149:    
+      +                               _delay((unsigned long)((2)*(8000000/4000.0)));
+  1065  008D  3006               	movlw	6
+  1066  008E  00F6               	movwf	??_motor_encendido+1
+  1067  008F  3030               	movlw	48
+  1068  0090  00F5               	movwf	??_motor_encendido
+  1069  0091                     u157:
+  1070  0091  0BF5               	decfsz	??_motor_encendido,f
+  1071  0092  2891               	goto	u157
+  1072  0093  0BF6               	decfsz	??_motor_encendido+1,f
+  1073  0094  2891               	goto	u157
+  1074  0095  0000               	nop
+  1075  0096                     l749:
+  1076                           
+  1077                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 151:    
+      +                               PORTDbits.RD7=0;
+  1078  0096  1283               	bcf	3,5	;RP0=0, select bank0
+  1079  0097  1303               	bcf	3,6	;RP1=0, select bank0
+  1080  0098  1388               	bcf	8,7	;volatile
+  1081  0099                     l751:
   1082                           
-  1083                           
-  1084                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 65:     
-      +                                      antirrebote1=1;
-  1085  010A  01F8               	clrf	_antirrebote1
-  1086  010B  0AF8               	incf	_antirrebote1,f
-  1087                           
-  1088                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 66:     
-      +                                      break;
-  1089  010C  291C               	goto	i1l52
-  1090  010D                     i1l774:
-  1091  010D  1283               	bcf	3,5	;RP0=0, select bank0
-  1092  010E  1303               	bcf	3,6	;RP1=0, select bank0
-  1093  010F  0806               	movf	6,w	;volatile
-  1094  0110  00F0               	movwf	??_isr
-  1095  0111  01F1               	clrf	??_isr+1
-  1096                           
-  1097                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
-      +                          itches
-  1098                           ; Switch size 1, requested type "simple"
-  1099                           ; Number of cases is 1, Range of values is 0 to 0
-  1100                           ; switch strategies available:
-  1101                           ; Name         Instructions Cycles
-  1102                           ; simple_byte            4     3 (average)
-  1103                           ; direct_byte           11     8 (fixed)
-  1104                           ; jumptable            260     6 (fixed)
-  1105                           ;	Chosen strategy is simple_byte
-  1106  0112  0871               	movf	??_isr+1,w
-  1107  0113  3A00               	xorlw	0	; case 0
-  1108  0114  1903               	skipnz
-  1109  0115  2917               	goto	i1l1092
-  1110  0116  291C               	goto	i1l52
-  1111  0117                     i1l1092:
+  1083                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 152:    
+      +                               PORTDbits.RD6=1;
+  1084  0099  1708               	bsf	8,6	;volatile
+  1085  009A                     l753:
+  1086                           
+  1087                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 153:    
+      +                               PORTDbits.RD5=1;
+  1088  009A  1688               	bsf	8,5	;volatile
+  1089  009B                     l755:
+  1090                           
+  1091                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 154:    
+      +                               PORTDbits.RD4=0;
+  1092  009B  1208               	bcf	8,4	;volatile
+  1093                           
+  1094                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 155:    
+      +                               _delay((unsigned long)((2)*(8000000/4000.0)));
+  1095  009C  3006               	movlw	6
+  1096  009D  00F6               	movwf	??_motor_encendido+1
+  1097  009E  3030               	movlw	48
+  1098  009F  00F5               	movwf	??_motor_encendido
+  1099  00A0                     u167:
+  1100  00A0  0BF5               	decfsz	??_motor_encendido,f
+  1101  00A1  28A0               	goto	u167
+  1102  00A2  0BF6               	decfsz	??_motor_encendido+1,f
+  1103  00A3  28A0               	goto	u167
+  1104  00A4  0000               	nop
+  1105  00A5                     l757:
+  1106                           
+  1107                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 157:    
+      +                               PORTDbits.RD7=0;
+  1108  00A5  1283               	bcf	3,5	;RP0=0, select bank0
+  1109  00A6  1303               	bcf	3,6	;RP1=0, select bank0
+  1110  00A7  1388               	bcf	8,7	;volatile
+  1111  00A8                     l759:
   1112                           
-  1113                           ; Switch size 1, requested type "simple"
-  1114                           ; Number of cases is 1, Range of values is 253 to 253
-  1115                           ; switch strategies available:
-  1116                           ; Name         Instructions Cycles
-  1117                           ; simple_byte            4     3 (average)
-  1118                           ; direct_byte           14    11 (fixed)
-  1119                           ; jumptable            263     9 (fixed)
-  1120                           ;	Chosen strategy is simple_byte
-  1121  0117  0870               	movf	??_isr,w
-  1122  0118  3AFD               	xorlw	253	; case 253
-  1123  0119  1903               	skipnz
-  1124  011A  290A               	goto	i1l51
-  1125  011B  291C               	goto	i1l52
-  1126  011C                     i1l52:
-  1127                           
-  1128                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 71:     
+  1113                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 158:    
+      +                               PORTDbits.RD6=0;
+  1114  00A8  1308               	bcf	8,6	;volatile
+  1115  00A9                     l761:
+  1116                           
+  1117                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 159:    
+      +                               PORTDbits.RD5=1;
+  1118  00A9  1688               	bsf	8,5	;volatile
+  1119  00AA                     l763:
+  1120                           
+  1121                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 160:    
+      +                               PORTDbits.RD4=1;
+  1122  00AA  1608               	bsf	8,4	;volatile
+  1123                           
+  1124                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 161:    
+      +                               _delay((unsigned long)((2)*(8000000/4000.0)));
+  1125  00AB  3006               	movlw	6
+  1126  00AC  00F6               	movwf	??_motor_encendido+1
+  1127  00AD  3030               	movlw	48
+  1128  00AE  00F5               	movwf	??_motor_encendido
+  1129  00AF                     u177:
+  1130  00AF  0BF5               	decfsz	??_motor_encendido,f
+  1131  00B0  28AF               	goto	u177
+  1132  00B1  0BF6               	decfsz	??_motor_encendido+1,f
+  1133  00B2  28AF               	goto	u177
+  1134  00B3  0000               	nop
+  1135                           
+  1136                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 162:    
+      +                           }
+  1137  00B4  3001               	movlw	1
+  1138  00B5  07F7               	addwf	motor_encendido@i,f
+  1139  00B6  1803               	skipnc
+  1140  00B7  0AF8               	incf	motor_encendido@i+1,f
+  1141  00B8  3000               	movlw	0
+  1142  00B9  07F8               	addwf	motor_encendido@i+1,f
+  1143  00BA  286A               	goto	l735
+  1144  00BB                     l72:
+  1145  00BB  0008               	return
+  1146  00BC                     __end_of_motor_encendido:
+  1147                           
+  1148                           	psect	text5
+  1149  0126                     __ptext5:	
+  1150 ;; *************** function _isr *****************
+  1151 ;; Defined at:
+  1152 ;;		line 55 in file "C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c"
+  1153 ;; Parameters:    Size  Location     Type
+  1154 ;;		None
+  1155 ;; Auto vars:     Size  Location     Type
+  1156 ;;		None
+  1157 ;; Return value:  Size  Location     Type
+  1158 ;;                  1    wreg      void 
+  1159 ;; Registers used:
+  1160 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1161 ;; Tracked objects:
+  1162 ;;		On entry : 0/0
+  1163 ;;		On exit  : 0/0
+  1164 ;;		Unchanged: 0/0
+  1165 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1166 ;;      Params:         0       0       0       0       0
+  1167 ;;      Locals:         0       0       0       0       0
+  1168 ;;      Temps:          5       0       0       0       0
+  1169 ;;      Totals:         5       0       0       0       0
+  1170 ;;Total ram usage:        5 bytes
+  1171 ;; Hardware stack levels used: 1
+  1172 ;; This function calls:
+  1173 ;;		Nothing
+  1174 ;; This function is called by:
+  1175 ;;		Interrupt level 1
+  1176 ;; This function uses a non-reentrant model
+  1177 ;;
+  1178                           
+  1179                           
+  1180                           ;psect for function _isr
+  1181  0126                     _isr:
+  1182  0126                     i1l799:
+  1183                           
+  1184                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 57:     
+      +                          if (INTCONbits.RBIF)
+  1185  0126  1C0B               	btfss	11,0	;volatile
+  1186  0127  2929               	goto	u3_21
+  1187  0128  292A               	goto	u3_20
+  1188  0129                     u3_21:
+  1189  0129  2944               	goto	i1l54
+  1190  012A                     u3_20:
+  1191  012A  2931               	goto	i1l805
+  1192  012B                     i1l51:	
+  1193                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 60:     
+      +                              {;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 65:
+      +                                       case(0b11111101):
+  1194                           
+  1195                           
+  1196                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 66:     
+      +                                      antirrebote1=1;
+  1197  012B  01FB               	clrf	_antirrebote1
+  1198  012C  0AFB               	incf	_antirrebote1,f
+  1199                           
+  1200                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 67:     
+      +                                      break;
+  1201  012D  2943               	goto	i1l52
+  1202  012E                     i1l53:	
+  1203                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 68:     
+      +                                  case(0b11111011):
+  1204                           
+  1205                           
+  1206                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 69:     
+      +                                      antirrebote2=1;
+  1207  012E  01FA               	clrf	_antirrebote2
+  1208  012F  0AFA               	incf	_antirrebote2,f
+  1209                           
+  1210                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 70:     
+      +                                      break;
+  1211  0130  2943               	goto	i1l52
+  1212  0131                     i1l805:
+  1213  0131  1283               	bcf	3,5	;RP0=0, select bank0
+  1214  0132  1303               	bcf	3,6	;RP1=0, select bank0
+  1215  0133  0806               	movf	6,w	;volatile
+  1216  0134  00F0               	movwf	??_isr
+  1217  0135  01F1               	clrf	??_isr+1
+  1218                           
+  1219                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  1220                           ; Switch size 1, requested type "simple"
+  1221                           ; Number of cases is 1, Range of values is 0 to 0
+  1222                           ; switch strategies available:
+  1223                           ; Name         Instructions Cycles
+  1224                           ; simple_byte            4     3 (average)
+  1225                           ; direct_byte           11     8 (fixed)
+  1226                           ; jumptable            260     6 (fixed)
+  1227                           ;	Chosen strategy is simple_byte
+  1228  0136  0871               	movf	??_isr+1,w
+  1229  0137  3A00               	xorlw	0	; case 0
+  1230  0138  1903               	skipnz
+  1231  0139  293B               	goto	i1l889
+  1232  013A  2943               	goto	i1l52
+  1233  013B                     i1l889:
+  1234                           
+  1235                           ; Switch size 1, requested type "simple"
+  1236                           ; Number of cases is 2, Range of values is 251 to 253
+  1237                           ; switch strategies available:
+  1238                           ; Name         Instructions Cycles
+  1239                           ; simple_byte            7     4 (average)
+  1240                           ; direct_byte           20    11 (fixed)
+  1241                           ; jumptable            263     9 (fixed)
+  1242                           ;	Chosen strategy is simple_byte
+  1243  013B  0870               	movf	??_isr,w
+  1244  013C  3AFB               	xorlw	251	; case 251
+  1245  013D  1903               	skipnz
+  1246  013E  292E               	goto	i1l53
+  1247  013F  3A06               	xorlw	6	; case 253
+  1248  0140  1903               	skipnz
+  1249  0141  292B               	goto	i1l51
+  1250  0142  2943               	goto	i1l52
+  1251  0143                     i1l52:
+  1252                           
+  1253                           ;C:/Users/Andy Bonilla/Documents/GitHub/PCBs/Proyecto1/Stepper.X/main_prueba.c: 72:     
       +                              INTCONbits.RBIF=0;
-  1129  011C  100B               	bcf	11,0	;volatile
-  1130  011D                     i1l53:
-  1131  011D  0874               	movf	??_isr+4,w
-  1132  011E  008A               	movwf	10
-  1133  011F  0873               	movf	??_isr+3,w
-  1134  0120  0084               	movwf	4
-  1135  0121  0E72               	swapf	??_isr+2,w
-  1136  0122  0083               	movwf	3
-  1137  0123  0EFE               	swapf	btemp,f
-  1138  0124  0E7E               	swapf	btemp,w
-  1139  0125  0009               	retfie
-  1140  0126                     __end_of_isr:
-  1141  007E                     btemp	set	126	;btemp
-  1142  007E                     wtemp0	set	126
-  1143                           
-  1144                           	psect	intentry
-  1145  0004                     __pintentry:	
-  1146                           ;incstack = 0
-  1147                           ; Regs used in _isr: [wreg-fsr0h+status,2+status,0]
-  1148                           
-  1149  0004                     interrupt_function:
-  1150  007E                     saved_w	set	btemp
-  1151  0004  00FE               	movwf	btemp
-  1152  0005  0E03               	swapf	3,w
-  1153  0006  00F2               	movwf	??_isr+2
-  1154  0007  0804               	movf	4,w
-  1155  0008  00F3               	movwf	??_isr+3
-  1156  0009  080A               	movf	10,w
-  1157  000A  00F4               	movwf	??_isr+4
-  1158  000B  120A  118A  2905   	ljmp	_isr
-  1159                           
-  1160                           	psect	config
-  1161                           
-  1162                           ;Config register CONFIG1 @ 0x2007
-  1163                           ;	Oscillator Selection bits
-  1164                           ;	FOSC = INTRC_NOCLKOUT, INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O f
+  1254  0143  100B               	bcf	11,0	;volatile
+  1255  0144                     i1l54:
+  1256  0144  0874               	movf	??_isr+4,w
+  1257  0145  008A               	movwf	10
+  1258  0146  0873               	movf	??_isr+3,w
+  1259  0147  0084               	movwf	4
+  1260  0148  0E72               	swapf	??_isr+2,w
+  1261  0149  0083               	movwf	3
+  1262  014A  0EFE               	swapf	btemp,f
+  1263  014B  0E7E               	swapf	btemp,w
+  1264  014C  0009               	retfie
+  1265  014D                     __end_of_isr:
+  1266  007E                     btemp	set	126	;btemp
+  1267  007E                     wtemp0	set	126
+  1268                           
+  1269                           	psect	intentry
+  1270  0004                     __pintentry:	
+  1271                           ;incstack = 0
+  1272                           ; Regs used in _isr: [wreg-fsr0h+status,2+status,0]
+  1273                           
+  1274  0004                     interrupt_function:
+  1275  007E                     saved_w	set	btemp
+  1276  0004  00FE               	movwf	btemp
+  1277  0005  0E03               	swapf	3,w
+  1278  0006  00F2               	movwf	??_isr+2
+  1279  0007  0804               	movf	4,w
+  1280  0008  00F3               	movwf	??_isr+3
+  1281  0009  080A               	movf	10,w
+  1282  000A  00F4               	movwf	??_isr+4
+  1283  000B  120A  118A  2926   	ljmp	_isr
+  1284                           
+  1285                           	psect	config
+  1286                           
+  1287                           ;Config register CONFIG1 @ 0x2007
+  1288                           ;	Oscillator Selection bits
+  1289                           ;	FOSC = INTRC_NOCLKOUT, INTOSCIO oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O f
       +                          unction on RA7/OSC1/CLKIN
-  1165                           ;	Watchdog Timer Enable bit
-  1166                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
-  1167                           ;	Power-up Timer Enable bit
-  1168                           ;	PWRTE = OFF, PWRT disabled
-  1169                           ;	RE3/MCLR pin function select bit
-  1170                           ;	MCLRE = OFF, RE3/MCLR pin function is digital input, MCLR internally tied to VDD
-  1171                           ;	Code Protection bit
-  1172                           ;	CP = OFF, Program memory code protection is disabled
-  1173                           ;	Data Code Protection bit
-  1174                           ;	CPD = OFF, Data memory code protection is disabled
-  1175                           ;	Brown Out Reset Selection bits
-  1176                           ;	BOREN = OFF, BOR disabled
-  1177                           ;	Internal External Switchover bit
-  1178                           ;	IESO = OFF, Internal/External Switchover mode is disabled
-  1179                           ;	Fail-Safe Clock Monitor Enabled bit
-  1180                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
-  1181                           ;	Low Voltage Programming Enable bit
-  1182                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
-  1183                           ;	In-Circuit Debugger Mode bit
-  1184                           ;	DEBUG = 0x1, unprogrammed default
-  1185  2007                     	org	8199
-  1186  2007  20D4               	dw	8404
-  1187                           
-  1188                           ;Config register CONFIG2 @ 0x2008
-  1189                           ;	Brown-out Reset Selection bit
-  1190                           ;	BOR4V = BOR40V, Brown-out Reset set to 4.0V
-  1191                           ;	Flash Program Memory Self Write Enable bits
-  1192                           ;	WRT = OFF, Write protection off
-  1193  2008                     	org	8200
-  1194  2008  3FFF               	dw	16383
+  1290                           ;	Watchdog Timer Enable bit
+  1291                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
+  1292                           ;	Power-up Timer Enable bit
+  1293                           ;	PWRTE = OFF, PWRT disabled
+  1294                           ;	RE3/MCLR pin function select bit
+  1295                           ;	MCLRE = OFF, RE3/MCLR pin function is digital input, MCLR internally tied to VDD
+  1296                           ;	Code Protection bit
+  1297                           ;	CP = OFF, Program memory code protection is disabled
+  1298                           ;	Data Code Protection bit
+  1299                           ;	CPD = OFF, Data memory code protection is disabled
+  1300                           ;	Brown Out Reset Selection bits
+  1301                           ;	BOREN = OFF, BOR disabled
+  1302                           ;	Internal External Switchover bit
+  1303                           ;	IESO = OFF, Internal/External Switchover mode is disabled
+  1304                           ;	Fail-Safe Clock Monitor Enabled bit
+  1305                           ;	FCMEN = OFF, Fail-Safe Clock Monitor is disabled
+  1306                           ;	Low Voltage Programming Enable bit
+  1307                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
+  1308                           ;	In-Circuit Debugger Mode bit
+  1309                           ;	DEBUG = 0x1, unprogrammed default
+  1310  2007                     	org	8199
+  1311  2007  20D4               	dw	8404
+  1312                           
+  1313                           ;Config register CONFIG2 @ 0x2008
+  1314                           ;	Brown-out Reset Selection bit
+  1315                           ;	BOR4V = BOR40V, Brown-out Reset set to 4.0V
+  1316                           ;	Flash Program Memory Self Write Enable bits
+  1317                           ;	WRT = OFF, Write protection off
+  1318  2008                     	org	8200
+  1319  2008  3FFF               	dw	16383
 
 Data Sizes:
     Strings     0
@@ -1302,8 +1444,8 @@ Data Sizes:
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMMON           14      6       9
-    BANK0            80      5       5
+    COMMON           14      9      12
+    BANK0            80      0       0
     BANK1            80      0       0
     BANK3            96      0       0
     BANK2            96      0       0
@@ -1314,6 +1456,8 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMMON
 
+    _main->_motor_encendido
+    _main->_motor_retorno
     _setup->_osc_config
 
 Critical Paths under _isr in COMMON
@@ -1322,8 +1466,7 @@ Critical Paths under _isr in COMMON
 
 Critical Paths under _main in BANK0
 
-    _main->_motor_encendido
-    _setup->_osc_config
+    None.
 
 Critical Paths under _isr in BANK0
 
@@ -1358,23 +1501,22 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 1     1      0      67
-                                              4 BANK0      1     1      0
-                      _motor_apagado
+ (0) _main                                                 0     0      0      75
                     _motor_encendido
+                      _motor_retorno
                               _setup
  ---------------------------------------------------------------------------------
- (1) _setup                                                0     0      0      22
+ (1) _setup                                                0     0      0      15
                          _osc_config
  ---------------------------------------------------------------------------------
- (2) _osc_config                                           3     3      0      22
-                                              5 COMMON     1     1      0
-                                              0 BANK0      2     2      0
+ (2) _osc_config                                           3     3      0      15
+                                              5 COMMON     3     3      0
  ---------------------------------------------------------------------------------
- (1) _motor_encendido                                      4     4      0      45
-                                              0 BANK0      4     4      0
+ (1) _motor_retorno                                        4     4      0      30
+                                              5 COMMON     4     4      0
  ---------------------------------------------------------------------------------
- (1) _motor_apagado                                        0     0      0       0
+ (1) _motor_encendido                                      4     4      0      30
+                                              5 COMMON     4     4      0
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 2
  ---------------------------------------------------------------------------------
@@ -1389,8 +1531,8 @@ Call Graph Tables:
  Call Graph Graphs:
 
  _main (ROOT)
-   _motor_apagado
    _motor_encendido
+   _motor_retorno
    _setup
      _osc_config
 
@@ -1402,17 +1544,17 @@ BITCOMMON            E      0       0       0        0.0%
 EEDATA             100      0       0       0        0.0%
 NULL                 0      0       0       0        0.0%
 CODE                 0      0       0       0        0.0%
-COMMON               E      6       9       1       64.3%
+COMMON               E      9       C       1       85.7%
 BITSFR0              0      0       0       1        0.0%
 SFR0                 0      0       0       1        0.0%
 BITSFR1              0      0       0       2        0.0%
 SFR1                 0      0       0       2        0.0%
 STACK                0      0       0       2        0.0%
-ABS                  0      0       E       3        0.0%
+ABS                  0      0       C       3        0.0%
 BITBANK0            50      0       0       4        0.0%
 BITSFR3              0      0       0       4        0.0%
 SFR3                 0      0       0       4        0.0%
-BANK0               50      5       5       5        6.2%
+BANK0               50      0       0       5        0.0%
 BITSFR2              0      0       0       5        0.0%
 SFR2                 0      0       0       5        0.0%
 BITBANK1            50      0       0       6        0.0%
@@ -1421,61 +1563,69 @@ BITBANK3            60      0       0       8        0.0%
 BANK3               60      0       0       9        0.0%
 BITBANK2            60      0       0      10        0.0%
 BANK2               60      0       0      11        0.0%
-DATA                 0      0       E      12        0.0%
+DATA                 0      0       C      12        0.0%
 
 
 Microchip Technology PIC Macro Assembler V2.32 build 20210201212658 
-Symbol Table                                                                                   Wed Sep 29 22:35:20 2021
+Symbol Table                                                                                   Thu Sep 30 00:27:40 2021
 
-                      l72 0028                        l74 0076                        l77 0129  
-                      l69 0104                        l88 00AF                       l930 0078  
-                     l940 0089                       l932 0079                       l766 0126  
-                     l942 008F                       l934 007F                       l950 0097  
-                     l944 0091                       l936 0081                       l960 00EB  
-                     l946 0095                       l938 0087                       l970 00FE  
-                     l962 00F3                       l980 0103                       l972 00FF  
-                     l964 00F9                       l956 00E4                       l990 003C  
-                     l982 0018                       l974 0100                       l966 00FC  
-                     l958 00E8                       l992 003D                       l976 0101  
-                     l968 00FD                       l994 003E                       l986 002E  
-                     l978 0102                       l996 004A                       l988 0039  
-                     l998 004D                       u110 0027                       u111 0026  
-                     u120 00BA                       u121 00B9                       u130 00C0  
-                     u115 0023                       u131 00BF                       u140 00CE  
-                     u141 00CD                       u150 00DA                       u151 00D9  
-                     u167 0034                       u177 0045                       u187 0056  
-                     u197 0067                       _isr 0105                       fsr0 0004  
-                    l1000 004E                      l1010 0060                      l1002 004F  
-                    l1004 005B                      l1020 00BA                      l1006 005E  
-                    l1014 0075                      l1030 00C9                      l1022 00C0  
-                    l1008 005F                      l1032 00CE                      l1024 00C1  
-                    l1016 00B0                      l1034 00D4                      l1026 00C5  
-                    l1018 00B5                      l1036 00DA                      l1028 00C8  
-                    l1038 00DB                      l1090 00A1                      ?_isr 0070  
-                    i1l51 010A                      i1l52 011C                      i1l53 011D  
-                    u2_20 0109                      u2_21 0108                      _main 00B0  
-                    btemp 007E                      start 000E            osc_config@freq 0075  
-                   ??_isr 0070                     ?_main 0070                     _ANSEL 0188  
-                   i1l774 010D                     i1l768 0105                     _PORTA 0005  
-                   _PORTB 0006                     _PORTD 0008                     _TRISA 0085  
-                   _TRISD 0088          motor_encendido@i 0022                     _setup 00E4  
-                   pclath 000A                     status 0003                     wtemp0 007E  
-         __initialization 0011              __end_of_main 00E4                    ??_main 0024  
-                  ?_setup 0070                    _ANSELH 0189                    i1l1092 0117  
-                  saved_w 007E           _motor_encendido 0018   __end_of__initialization 0014  
-          __pcstackCOMMON 0070             __end_of_setup 0105            _OPTION_REGbits 0081  
-                 ??_setup 0076     __end_of_motor_apagado 012A                __pmaintext 00B0  
-              __pintentry 0004   __end_of_motor_encendido 0077                   __ptext1 00E4  
-                 __ptext2 0077                   __ptext3 0018                   __ptext4 0126  
-                 __ptext5 0105              __size_of_isr 0021      end_of_initialization 0014  
-              _osc_config 0077              _antirrebote1 0078              _antirrebote2 0077  
-               _PORTBbits 0006          ?_motor_encendido 0070                 _PORTDbits 0008  
-               _TRISBbits 0086       start_initialization 0011               __end_of_isr 0126  
-             ?_osc_config 0070               __pbssCOMMON 0076                 ___latbits 0002  
-           __pcstackBANK0 0020                 _encendido 0076       __size_of_osc_config 0039  
-  __size_of_motor_apagado 0004            __size_of_setup 0021         interrupt_function 0004  
-                _IOCBbits 0096                  _WPUBbits 0095             _motor_apagado 0126  
-__size_of_motor_encendido 005F              ??_osc_config 0020             __size_of_main 0034  
-          ?_motor_apagado 0070                _INTCONbits 000B        __end_of_osc_config 00B0  
-                intlevel1 0000                _OSCCONbits 008F         ??_motor_encendido 0020  
-         ??_motor_apagado 0075  
+                      l70 0078                        l72 00BB                        l80 0069  
+                      l91 00F2                        l67 016D                        l78 0026  
+                      u10 0077                        u11 0076                        u20 0025  
+                      u21 0024                        u15 0073                        u40 00FD  
+                      u25 0021                        u41 00FC                        u50 0103  
+                      u51 0102                        u60 0107                        u61 0106  
+                      u70 0112                        u71 0111                        u80 0118  
+                      u81 0117                        u90 011C                        u91 011B  
+         ??_motor_retorno 0075                       l703 00DC                       l711 0151  
+                     l721 0166                       l713 0154                       l731 016B  
+                     l723 0167                       l715 015C                       l741 0087  
+                     l733 016C                       l725 0168                       l717 0162  
+                     l709 014D                       l821 0107                       l813 00F3  
+                     l751 0099                       l743 008A                       l735 006A  
+                     l727 0169                       l719 0165                       l831 011C  
+                     l823 0108                       l815 00F8                       l761 00A9  
+                     l753 009A                       l745 008B                       l729 016A  
+                     l833 011D                       l817 00FD                       l825 010D  
+                     l763 00AA                       l755 009B                       l747 008C  
+                     l739 007E                       l771 002C                       l691 00CC  
+                     l683 00BD                       l827 0112                       l819 0103  
+                     l757 00A5                       l749 0096                       l781 0044  
+                     l773 0035                       l693 00CE                       l685 00BE  
+                     l829 0118                       l759 00A8                       l791 0056  
+                     l783 0047                       l775 0038                       l767 0018  
+                     l695 00D4                       l687 00C4                       l793 0057  
+                     l785 0048                       l777 0039                       l697 00D6  
+                     l689 00C6                       l795 0058                       l787 0049  
+                     l779 003A                       l699 00DA                       l789 0053  
+                     l887 00E4                       u107 0030                       u117 003F  
+                     u127 004E                       u137 005D                       u147 0082  
+                     u157 0091                       u167 00A0                       u177 00AF  
+                     _isr 0126                       fsr0 0004                      ?_isr 0070  
+                    i1l51 012B                      i1l52 0143                      i1l53 012E  
+                    i1l54 0144                      u3_20 012A                      u3_21 0129  
+                    _main 00F3                      btemp 007E                      start 000E  
+          osc_config@freq 0077                     ??_isr 0070                     ?_main 0070  
+                   _ANSEL 0188                     i1l805 0131                     i1l799 0126  
+                   i1l889 013B                     _PORTB 0006                     _PORTD 0008  
+                   _PORTE 0009                     _TRISD 0088                     _TRISE 0089  
+        motor_encendido@i 0077                     _setup 014D                     pclath 000A  
+                   status 0003                     wtemp0 007E           __initialization 0011  
+            __end_of_main 0126                    ??_main 0079                    ?_setup 0070  
+                  _ANSELH 0189                    saved_w 007E           _motor_encendido 006A  
+ __end_of__initialization 0014            __pcstackCOMMON 0070             __end_of_setup 016E  
+          _OPTION_REGbits 0081                   ??_setup 0078                __pmaintext 00F3  
+              __pintentry 0004   __end_of_motor_encendido 00BC     __end_of_motor_retorno 006A  
+                 __ptext1 014D                   __ptext2 00BC                   __ptext3 0018  
+                 __ptext4 006A                   __ptext5 0126              __size_of_isr 0027  
+    end_of_initialization 0014                _osc_config 00BC              _antirrebote1 007B  
+            _antirrebote2 007A                 _PORTBbits 0006          ?_motor_encendido 0070  
+               _PORTDbits 0008                 _TRISBbits 0086       start_initialization 0011  
+             __end_of_isr 014D               ?_osc_config 0070               __pbssCOMMON 0079  
+               ___latbits 0002                 _encendido 0079       __size_of_osc_config 0037  
+          __size_of_setup 0021         interrupt_function 0004                  _IOCBbits 0096  
+  __size_of_motor_retorno 0052                  _WPUBbits 0095             _motor_retorno 0018  
+          motor_retorno@j 0077  __size_of_motor_encendido 0052              ??_osc_config 0075  
+           __size_of_main 0033            ?_motor_retorno 0070                _INTCONbits 000B  
+      __end_of_osc_config 00F3                  intlevel1 0000                _OSCCONbits 008F  
+       ??_motor_encendido 0075  
