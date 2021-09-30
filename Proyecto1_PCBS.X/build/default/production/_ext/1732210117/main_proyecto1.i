@@ -2627,7 +2627,6 @@ void setup(void);
 void antirrebotes(void);
 void motor_encendido(void);
 void motor_apagado(void);
-void retorno_motor(void);
 
 # 76
 void __interrupt() isr(void)
@@ -2640,7 +2639,6 @@ switch(PORTB)
 default:
 antirrebote1=0;
 antirrebote2=0;
-antirrebote3=0;
 break;
 case(0b11111110):
 antirrebote1=1;
@@ -2648,57 +2646,28 @@ break;
 case(0b11111101):
 antirrebote2=1;
 break;
-case(0b11111100):
-antirrebote3=1;
-break;
 }
 INTCONbits.RBIF=0;
 }
 }
 
-# 104
+# 100
 void main(void)
 {
 setup();
 while(1)
 {
+PORTAbits.RA0=1;
+_delay((unsigned long)((1000)*(4000000/4000.0)));
+PORTAbits.RA0=0;
+_delay((unsigned long)((1000)*(4000000/4000.0)));
 
-antirrebotes();
-
-while (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
-{
-bot_apagado=0;
-bot_retorno=0;
-
-for(int i=0; i<60000;i++)
-{
-motor_encendido();
-}
 }
 
-while (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
-{
-bot_encendido=0;
-bot_apagado=0;
-for(int i=0; i<1000;i++)
-{
-retorno_motor();
-}
+
 }
 
-while (bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
-{
-bot_encendido=0;
-bot_retorno=0;
-motor_apagado();
-}
-
-# 148
-}
-return;
-}
-
-# 154
+# 117
 void setup(void)
 {
 
@@ -2709,6 +2678,11 @@ TRISA=0;
 TRISBbits.TRISB0=1;
 TRISBbits.TRISB1=1;
 TRISBbits.TRISB2=1;
+TRISBbits.TRISB3=1;
+TRISBbits.TRISB4=1;
+TRISBbits.TRISB5=1;
+TRISBbits.TRISB6=1;
+TRISBbits.TRISB7=1;
 TRISD=0;
 
 PORTA=0;
@@ -2721,6 +2695,11 @@ OPTION_REGbits.nRBPU=0;
 WPUBbits.WPUB0=1;
 WPUBbits.WPUB1=1;
 WPUBbits.WPUB2=1;
+WPUBbits.WPUB3=1;
+WPUBbits.WPUB4=1;
+WPUBbits.WPUB5=1;
+WPUBbits.WPUB6=1;
+WPUBbits.WPUB7=1;
 
 INTCONbits.GIE=1;
 INTCONbits.PEIE = 1;
@@ -2729,64 +2708,32 @@ INTCONbits.RBIF=0;
 IOCBbits.IOCB0=1;
 IOCBbits.IOCB1=1;
 IOCBbits.IOCB2=1;
+IOCBbits.IOCB3=1;
+IOCBbits.IOCB4=1;
+IOCBbits.IOCB5=1;
+IOCBbits.IOCB6=1;
+IOCBbits.IOCB7=1;
 }
 
-# 189
-void antirrebotes(void)
-{
-
-if (antirrebote1==1 && PORTBbits.RB0==0)
-{
-antirrebote1=0;
-PORTD++;
-bot_encendido++;
-if (bot_encendido>1)
-bot_encendido=0;
-}
-else
-bot_encendido=0;
-
-if (antirrebote2==1 && PORTBbits.RB1==0)
-{
-antirrebote2=0;
-bot_apagado++;
-if(bot_apagado>1)
-bot_apagado=0;
-}
-else
-bot_apagado=0;
-
-if (antirrebote3==1 && PORTBbits.RB2==0)
-{
-antirrebote3=0;
-bot_retorno++;
-if(bot_retorno>1)
-bot_retorno=0;
-}
-else
-bot_retorno=0;
-return;
-}
-
-
+# 170
 void motor_encendido(void)
 {
 PORTA=encendido[1];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[2];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[3];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[4];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[5];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[6];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[7];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 PORTA=encendido[8];
-_delay((unsigned long)((1)*(4000000/4000.0)));
+_delay((unsigned long)((20)*(4000000/4000.0)));
 
 }
 

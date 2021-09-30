@@ -69,7 +69,7 @@ void setup(void);
 void antirrebotes(void);
 void motor_encendido(void);
 void motor_apagado(void);
-void retorno_motor(void);
+
 /*-----------------------------------------------------------------------------
  --------------------------- INTERRUPCIONES -----------------------------------
  -----------------------------------------------------------------------------*/
@@ -83,16 +83,12 @@ void __interrupt() isr(void) //funcion de interrupciones
             default:
                 antirrebote1=0;
                 antirrebote2=0;
-                antirrebote3=0;
                 break;
-            case(0b11111110):       //caso interrupcion encendido
+            case(0b11111110):       //caso interrupcion encendido, rb2
                 antirrebote1=1;
                 break;
-            case(0b11111101):       //caso interrupcion apagado
+            case(0b11111101):
                 antirrebote2=1;
-                break;
-            case(0b11111100):       //caso interrupcion returno
-                antirrebote3=1;
                 break;
         }
         INTCONbits.RBIF=0;
@@ -106,47 +102,14 @@ void main(void)
     setup();
     while(1)
     {
-        //-------FUNCION PARA 3 ANTIRREBOTES
-        antirrebotes();
-        //-------EVALUACION SI SE PRENDE
-        while (bot_encendido==1 && bot_apagado==0 && bot_retorno==0)
-        {
-            bot_apagado=0;
-            bot_retorno=0;
-            
-            for(int i=0; i<60000;i++)
-            {
-                motor_encendido();
-            }
-        }
-        //-------EVALUACION SI SE PIDE RETORNO
-        while (bot_encendido==0 && bot_apagado==0 && bot_retorno==1)
-        {
-            bot_encendido=0;
-            bot_apagado=0;
-            for(int i=0; i<1000;i++)
-            {
-                retorno_motor();
-            }
-        }
-        //-------EVALUACION SI SE APAGA
-        while (bot_encendido==0 && bot_apagado==1 && bot_retorno==0)
-        {
-            bot_encendido=0;
-            bot_retorno=0;
-            motor_apagado();
-        }
-        //-------EVALUACION SI NO SE HACE NADA
-        /*else
-        {
-            bot_encendido=0;
-            bot_apagado=0;
-            bot_retorno=0;
-            motor_apagado();
-        }*/
-        
+        PORTAbits.RA0=1;     //pines en paso 1
+        __delay_ms(1000);
+        PORTAbits.RA0=0;     //pines en paso 1
+        __delay_ms(1000);
+       
     }
-    return;
+        
+    
 }
 /*-----------------------------------------------------------------------------
  ---------------------------------- SET UP -----------------------------------
@@ -154,6 +117,7 @@ void main(void)
 void setup(void)
 {
     //-------CONFIGURACION ENTRADAS ANALOGICAS
+    
     ANSEL=0;
     ANSELH=0;
     //-------CONFIGURACION DE PUERTOS
@@ -161,6 +125,11 @@ void setup(void)
     TRISBbits.TRISB0=1;        //entrada para los botones de modos
     TRISBbits.TRISB1=1;        //entrada para los botones de modos
     TRISBbits.TRISB2=1;        //entrada para los botones de modos
+    TRISBbits.TRISB3=1;        //entrada para los botones de modos
+    TRISBbits.TRISB4=1;        //entrada para los botones de modos
+    TRISBbits.TRISB5=1;        //entrada para los botones de modos
+    TRISBbits.TRISB6=1;        //entrada para los botones de modos
+    TRISBbits.TRISB7=1;        //entrada para los botones de modos
     TRISD=0;        //entrada para los botones de modos
     //-------LIMPIEZA DE PUERTOS
     PORTA=0;                    //se limpia puerto A
@@ -173,6 +142,11 @@ void setup(void)
     WPUBbits.WPUB0=1;                   //RB0, boton encendido
     WPUBbits.WPUB1=1;                   //RB1, boton apagado
     WPUBbits.WPUB2=1;                   //RB2, boton retorno
+    WPUBbits.WPUB3=1;                   //RB3, boton retorno
+    WPUBbits.WPUB4=1;                   //RB4, boton retorno
+    WPUBbits.WPUB5=1;                   //RB5, boton retorno
+    WPUBbits.WPUB6=1;                   //RB6, boton retorno
+    WPUBbits.WPUB7=1;                   //RB7, boton retorno
     //-------CONFIGURACION DE INTERRUPCIONES
     INTCONbits.GIE=1;                   //se habilita interrupciones globales
     INTCONbits.PEIE = 1;                //habilitan interrupciones por perifericos
@@ -181,66 +155,37 @@ void setup(void)
     IOCBbits.IOCB0=1;                   //habilita IOCB RB0
     IOCBbits.IOCB1=1;                   //habilita IOCB RB1
     IOCBbits.IOCB2=1;                   //habilita IOCB RB2
+    IOCBbits.IOCB3=1;                   //habilita IOCB RB3
+    IOCBbits.IOCB4=1;                   //habilita IOCB RB4
+    IOCBbits.IOCB5=1;                   //habilita IOCB RB5
+    IOCBbits.IOCB6=1;                   //habilita IOCB RB6
+    IOCBbits.IOCB7=1;                   //habilita IOCB RB7
 }
 /*-----------------------------------------------------------------------------
  --------------------------------- FUNCIONES ----------------------------------
  -----------------------------------------------------------------------------*/
 //-------FUNCION PARA 3 ANTIRREBOTES
-void antirrebotes(void)
-{
-    //-------ANTIRREBOTE DE BOTON ENCENDIDO
-    if (antirrebote1==1 && PORTBbits.RB0==0)
-    {
-        antirrebote1=0;
-        PORTD++;
-        bot_encendido++;
-        if (bot_encendido>1)
-            bot_encendido=0;
-    }
-    else
-        bot_encendido=0;
-    //-------ANTIRREBOTE DE BOTON APAGADO
-    if (antirrebote2==1 && PORTBbits.RB1==0)
-    {
-        antirrebote2=0;
-        bot_apagado++;
-        if(bot_apagado>1)
-            bot_apagado=0;
-    }
-    else
-        bot_apagado=0;
-    //-------ANTIRREBOTE DE BOTON RETORNO
-    if (antirrebote3==1 && PORTBbits.RB2==0)
-    {
-        antirrebote3=0;
-        bot_retorno++;
-        if(bot_retorno>1)
-            bot_retorno=0;
-    }
-    else
-        bot_retorno=0;
-    return;
-}
+
 
 //-------FUNCION PARA MOTOR ENCENDIDO
 void motor_encendido(void)
 {
     PORTA=encendido[1];     //pines en paso 1
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[2];     //pines en paso 2
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[3];     //pines en paso 3
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[4];     //pines en paso 4
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[5];     //pines en paso 5
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[6];     //pines en paso 6
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[7];     //pines en paso 7
-    __delay_ms(1);
+    __delay_ms(20);
     PORTA=encendido[8];     //pines en paso 8
-    __delay_ms(1);
+    __delay_ms(20);
     
 }
 
